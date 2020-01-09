@@ -16,7 +16,19 @@ if ('serviceWorker' in navigator) {
 
 // place your code below
 
+const temp = document.querySelector('.info__item--temperature--js');
+const humidity = document.querySelector('.info__item--humidity--js');
 
-console.log(`Hello world!`);
 
+fetch('http://api.weatherapi.com/v1/current.json?key=5ff4f415d6e94783821203729200701&q=Wroclaw')
+    .then(resp => resp.json())
+    .then(resp => {
+      const repo = resp
+        console.log(repo)
+      temp.innerHTML = repo.current.temp_c;
+      humidity.innerHTML = repo.current.humidity;
+    })
+    .catch(err => {
+      console.error("BLa")
+    })
 

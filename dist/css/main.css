@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 html {
   line-height: 1.15;
   /* 1 */
@@ -322,11 +322,18 @@ html {
 
 body {
   color: #FFFFFF;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
 
 .main {
-  max-width: 1200px;
-  height: 650px;
   margin: 0 auto;
   border-radius: 30px;
   background-color: #72BBFF;
@@ -334,6 +341,7 @@ body {
   font-size: 40px; }
 
 .time {
+  margin-top: 20px;
   text-align: center;
   font-size: 100px; }
 
@@ -358,5 +366,34 @@ body {
     height: 42px;
     background-color: #69FF34;
     color: #FFFFFF; }
+
+.info {
+  display: -ms-grid;
+  display: grid;
+  padding: 40px;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  -webkit-column-gap: 64px;
+     -moz-column-gap: 64px;
+          column-gap: 64px;
+  row-gap: 36px;
+  margin: 0 auto;
+  text-align: center; }
+  .info__item {
+    color: #464646;
+    font-weight: bold;
+    background-color: #FFFFFF;
+    width: 180px;
+    height: 102px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 10px; }
+    .info__item--value {
+      margin-top: -2px;
+      font-size: 28px; }
+    .info__item--container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
 
 /*# sourceMappingURL=main.css.map */
