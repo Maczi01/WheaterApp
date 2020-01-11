@@ -366,6 +366,8 @@ body {
     height: 42px;
     background-color: #69FF34;
     color: #FFFFFF; }
+    .cities__item--search {
+      background-color: #FFFFFF; }
 
 .info {
   display: -ms-grid;
