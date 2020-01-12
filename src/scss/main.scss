@@ -65,7 +65,14 @@ body {
       //align-items: flex-start;
     }
     &--search{
+
+
+    }
+    &--input{
+      font-size: 20px;
       background-color: $white;
+      border-radius: 52px;
+      width: 180px;
 
     }
   }
