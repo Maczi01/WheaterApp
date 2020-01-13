@@ -23,16 +23,32 @@ const wind = document.querySelector('.info__item--wind--js');
 const sunrise = document.querySelector('.info__item--sunrise--js');
 const sunset = document.querySelector('.info__item--sunset--js');
 const cities = document.querySelector('.cities');
+const searchButton = document.querySelector(".searchButton");
 let city = 'Wroclaw';
+searchButton.addEventListener('click', function () {
+    city = document.getElementById("customcity").value;
+    getValues();
+});
 var urlWheather;
 var urlAstro;
 
-
+// cities.addEventListener('click', getValues);
 cities.addEventListener('click', function (e) {
-  city = e.target.textContent;
+    if (e.target.className === ("cities__item")) {
+        city = e.target.textContent;
+        console.log(city);
+        getValues();
+    }
+})
+
+
+function getValues() {
+    // if (e.target.className === ("cities__item")) {
+    //   city = e.target.textContent;
+    // console.log(city);
     urlWheather = "http://api.weatherapi.com/v1/current.json?key=3f1ad206d1b94436825173623201101&q=" + city;
-    urlAstro = "http://api.weatherapi.com/v1/astronomy.json?key=3f1ad206d1b94436825173623201101&q=" + city + "&dt=2020-01-11" ;
-    console.log(city);
+    urlAstro = "http://api.weatherapi.com/v1/astronomy.json?key=3f1ad206d1b94436825173623201101&q=" + city + "&dt=2020-01-11";
+    // console.log(city);
     // console.log(url);
     fetch(urlWheather)
         .then(resp => resp.json())
@@ -47,29 +63,19 @@ cities.addEventListener('click', function (e) {
             console.error("Błąd ładowania danych")
         });
 
-  fetch(urlAstro)
-    .then(resp => resp.json())
-    .then(resp => {
-      const info = resp
-      sunrise.innerHTML = info.astronomy.astro.sunrise;
-      sunset.innerHTML = info.astronomy.astro.sunset;
-    })
-    .catch(err => {
-      console.error("Błąd ładowania danych")
-    });
+    fetch(urlAstro)
+        .then(resp => resp.json())
+        .then(resp => {
+            const info = resp
+            sunrise.innerHTML = info.astronomy.astro.sunrise;
+            sunset.innerHTML = info.astronomy.astro.sunset;
+        })
+        .catch(err => {
+            console.error("Błąd ładowania danych")
+        });
+}
 
-});
 
-// fetch("http://api.weatherapi.com/v1/astronomy.json?key=3f1ad206d1b94436825173623201101&q=Warsaw&dt=2020-01-11")
-//     .then(resp => resp.json())
-//     .then(resp => {
-//       const info1 = resp
-//       sunrise.innerHTML = info1.astronomy.astro.sunrise;
-//       sunset.innerHTML = info1.astronomy.astro.sunset;
-//     })
-//     .catch(err => {
-//       console.error("Błąd ładowania danych")
-//     });
 
 
 
