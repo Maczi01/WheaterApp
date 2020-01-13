@@ -26,10 +26,12 @@ const cities = document.querySelector('.cities');
 const searchButton = document.querySelector(".searchButton");
 const currentlocation = document.querySelector('.current__location');
 let city;
+let time = document.querySelector('.current__time');
 var urlWheather;
 var urlAstro;
 
 window.onload = function () {
+    time.innerHTML = new Date().getHours() + ":" + new Date().getMinutes();
     var loc = navigator.geolocation;
     if (loc) {
         loc.getCurrentPosition(function (location) {
