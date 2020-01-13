@@ -33,10 +33,14 @@ body {
   font-size: 40px;
 }
 
-.time {
+.current {
   margin-top: 20px;
   text-align: center;
   font-size: 100px;
+  &__location{
+    text-align: center;
+    font-size: 30px;
+  }
 }
 
 .cities {
@@ -88,7 +92,7 @@ body {
       height: 42px;
       //background-color: $white;
       //color: $white;
-      color: #00B4CC;
+      color: black;
 
     }
   }

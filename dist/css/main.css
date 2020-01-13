@@ -340,10 +340,13 @@ body {
   color: #FFFFFF;
   font-size: 40px; }
 
-.time {
+.current {
   margin-top: 20px;
   text-align: center;
   font-size: 100px; }
+  .current__location {
+    text-align: center;
+    font-size: 30px; }
 
 .cities {
   display: -ms-grid;
@@ -378,7 +381,7 @@ body {
       border-radius: 52px;
       width: 180px;
       height: 42px;
-      color: #00B4CC; }
+      color: black; }
 
 .searchButton {
   font-size: 20px;

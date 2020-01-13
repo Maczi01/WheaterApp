@@ -24,29 +24,51 @@ const sunrise = document.querySelector('.info__item--sunrise--js');
 const sunset = document.querySelector('.info__item--sunset--js');
 const cities = document.querySelector('.cities');
 const searchButton = document.querySelector(".searchButton");
-let city = 'Wroclaw';
+const currentlocation = document.querySelector('.current__location');
+let city;
+var urlWheather;
+var urlAstro;
+
+window.onload = function () {
+    var loc = navigator.geolocation;
+    if (loc) {
+        loc.getCurrentPosition(function (location) {
+            const lat = location.coords.latitude;
+            const lon = location.coords.longitude;
+            fetch("http://api.weatherapi.com/v1/current.json?key=3f1ad206d1b94436825173623201101&q=" + lat + "," + lon)
+                .then(resp => resp.json())
+                .then(resp => {
+                    const info = resp;
+                    city = info.location.name;
+                    console.log(city);
+                    getValues();
+                })
+                .catch(err => {
+                    console.error("Błąd ładowania danych")
+                });
+        });
+    } else {
+        console.log("Nie udostępniono lokalizacji");
+    }
+}
+
 searchButton.addEventListener('click', function () {
     city = document.getElementById("customcity").value;
     getValues();
 });
-var urlWheather;
-var urlAstro;
 
-// cities.addEventListener('click', getValues);
 cities.addEventListener('click', function (e) {
     if (e.target.className === ("cities__item")) {
         city = e.target.textContent;
         console.log(city);
         getValues();
     }
-})
+});
 
 
 function getValues() {
-    // if (e.target.className === ("cities__item")) {
-    //   city = e.target.textContent;
-    // console.log(city);
-    urlWheather = "http://api.weatherapi.com/v1/current.json?key=3f1ad206d1b94436825173623201101&q=" + city;
+  currentlocation.innerHTML = city;
+  urlWheather = "http://api.weatherapi.com/v1/current.json?key=3f1ad206d1b94436825173623201101&q=" + city;
     urlAstro = "http://api.weatherapi.com/v1/astronomy.json?key=3f1ad206d1b94436825173623201101&q=" + city + "&dt=2020-01-11";
     // console.log(city);
     // console.log(url);
@@ -62,7 +84,6 @@ function getValues() {
         .catch(err => {
             console.error("Błąd ładowania danych")
         });
-
     fetch(urlAstro)
         .then(resp => resp.json())
         .then(resp => {
