@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
 </head>
 <body>
 <main class="main">
@@ -46,15 +45,20 @@
         <section class="cities__item">Warszawa</section>
         <section class="cities__item">Torun</section>
         <section class="cities__item--search">
-                <input type="search" class="cities__item--input" id="customcity" name="customcity" placeholder=" Find city">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button>
+            <input type="search" class="cities__item--input" id="customcity" name="customcity" placeholder=" Find city">
+            <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
         </section>
     </section>
     <section class="current">
-        <section class="current__time">11:21</section>
-        <section class="current__location">Current city</section>
+        <section class="current__days">
+            <section class="current__days--today">Today</section>
+            <section class="current__days--tomorrow">Tomorrow</section>
+
+        </section>
+        <section class="current__time">  </section>
+        <section class="current__location">  </section>
     </section>
     <section class="info">
         <section class="info__item">
@@ -67,7 +71,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/humidity.svg" height="48" width="48" class="info__item--humidity">
+                <img src="/assets/img/humidity.svg" height="48" width="48" class="info__item--humidity">
                 <p>Wilgotność</p>
             </div>
             <p class="info__item--value info__item--humidity--js"></p>
@@ -75,7 +79,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/clouds.svg" height="48" width="48" class="info__item--clouds">
+                <img src="/assets/img/clouds.svg" height="48" width="48" class="info__item--clouds">
                 <p>Zachmurzenie</p>
             </div>
             <p class="info__item--value info__item--clouds--js"></p>
@@ -83,7 +87,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/wind.svg" height="48" width="48" class="info__item--wind">
+                <img src="/assets/img/wind.svg" height="48" width="48" class="info__item--wind">
                 <p>Wiatr</p>
             </div>
             <p class="info__item--value info__item--wind--js"></p>
@@ -91,7 +95,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/sunrise.svg" height="48" width="48" class="info__item--sunrise">
+                <img src="/assets/img/sunrise.svg" height="48" width="48" class="info__item--sunrise">
                 <p class="info__item--text">Wschód słońca</p>
             </div>
             <p class="info__item--value info__item--sunrise--js"></p>
@@ -99,7 +103,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/sunset.svg" height="48" width="48" class="info__item--sunset">
+                <img src="/assets/img/sunset.svg" height="48" width="48" class="info__item--sunset">
                 <p>Zachód słońca</p>
             </div>
             <p class="info__item--value info__item--sunset--js"></p>

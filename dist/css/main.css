@@ -347,6 +347,27 @@ body {
   .current__location {
     text-align: center;
     font-size: 30px; }
+  .current__days {
+    display: -ms-grid;
+    display: grid;
+    padding: 40px;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -webkit-column-gap: 64px;
+       -moz-column-gap: 64px;
+            column-gap: 64px;
+    row-gap: 36px;
+    margin: 0 auto;
+    text-align: center; }
+    .current__days--today, .current__days--tomorrow {
+      margin: 0 auto;
+      font-size: 20px;
+      padding-top: 8px;
+      border-radius: 52px;
+      width: 180px;
+      height: 42px;
+      background-color: #f5f037;
+      color: #464646; }
 
 .cities {
   display: -ms-grid;

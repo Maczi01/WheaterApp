@@ -31,7 +31,7 @@ var urlWheather;
 var urlAstro;
 
 window.onload = function () {
-    time.innerHTML = new Date().getHours() + ":" + new Date().getMinutes();
+    time.innerHTML = new Date().getHours()-1 + ":" + new Date().getMinutes();
     var loc = navigator.geolocation;
     if (loc) {
         loc.getCurrentPosition(function (location) {
