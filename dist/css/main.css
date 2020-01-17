@@ -312,7 +312,7 @@ html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 16px; }
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     html {
       font-size: 11px; } }
 
@@ -339,11 +339,14 @@ body {
   background-color: #72BBFF;
   color: #FFFFFF;
   font-size: 40px; }
+  @media (max-width: 640px) {
+    .main {
+      margin: 30px; } }
 
 .current {
   margin-top: 20px;
   text-align: center;
-  font-size: 100px; }
+  font-size: 6.25rem; }
   .current__location {
     text-align: center;
     font-size: 30px; }
@@ -353,10 +356,9 @@ body {
     padding: 40px;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    -webkit-column-gap: 64px;
-       -moz-column-gap: 64px;
-            column-gap: 64px;
-    row-gap: 36px;
+    -webkit-column-gap: 1rem;
+       -moz-column-gap: 1rem;
+            column-gap: 1rem;
     margin: 0 auto;
     text-align: center; }
     .current__days--today, .current__days--tomorrow {
@@ -368,6 +370,23 @@ body {
       height: 42px;
       background-color: #f5f037;
       color: #464646; }
+      @media (max-width: 640px) {
+        .current__days--today, .current__days--tomorrow {
+          font-size: 15px;
+          height: 30px;
+          width: 100px; } }
+    .current__days--hamburger {
+      margin: 0 auto;
+      font-size: 15px;
+      padding-top: 8px;
+      border-radius: 52px;
+      width: 62px;
+      height: 30px;
+      background-color: #f5f037;
+      color: #464646; }
+      @media (min-width: 640px) {
+        .current__days--hamburger {
+          display: none; } }
 
 .cities {
   display: -ms-grid;
@@ -381,6 +400,9 @@ body {
   row-gap: 36px;
   margin: 0 auto;
   text-align: center; }
+  @media (max-width: 640px) {
+    .cities {
+      display: none; } }
   .cities__item {
     margin: 0 auto;
     font-size: 20px;
@@ -422,18 +444,25 @@ body {
   row-gap: 36px;
   margin: 0 auto;
   text-align: center; }
+  @media (max-width: 640px) {
+    .info {
+      -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      -webkit-column-gap: 4rem;
+         -moz-column-gap: 4rem;
+              column-gap: 4rem; } }
   .info__item {
     color: #464646;
     font-weight: bold;
     background-color: #FFFFFF;
-    width: 180px;
+    width: 11.25rem;
     height: 102px;
     padding: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 10px; }
     .info__item--value {
       margin-top: -2px;
-      font-size: 28px; }
+      font-size: 1.75rem; }
     .info__item--container {
       display: -webkit-box;
       display: -ms-flexbox;

@@ -3,8 +3,11 @@
 ### simple app to show wheather using wheather api 
 ##### one of my first project with JavaScript
 
+* the appearance of the application was first designed in Figma 
 * the application initially shows the weather for the current location - if the location has been agreed  
-* You can choose the weather for one of several cities or use the search engine
+* you can choose the weather for one of several cities or use the search engine
 * the application uses [Wheather API](https://www.weatherapi.com/)
+* https://github.com/Maczi01/WheaterApp/blob/master/src/assets/img/index.png?raw=true
+* The website will be available as desktop and mobile versions
 
-![screenshot]()
+![screenshot](https://github.com/Maczi01/WheaterApp/blob/master/src/assets/img/index.png?raw=true)

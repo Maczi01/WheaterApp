@@ -25,6 +25,7 @@ const sunset = document.querySelector('.info__item--sunset--js');
 const cities = document.querySelector('.cities');
 const searchButton = document.querySelector(".searchButton");
 const currentlocation = document.querySelector('.current__location');
+const openMenu = document.querySelector('.current__days--hamburger--js');
 let city;
 let time = document.querySelector('.current__time');
 var urlWheather;
@@ -52,7 +53,12 @@ window.onload = function () {
     } else {
         console.log("Nie udostępniono lokalizacji");
     }
-}
+};
+
+openMenu.addEventListener('click', function () {
+    navigationList.classList.toggle("navigation__list--visible");
+
+})
 
 searchButton.addEventListener('click', function () {
     city = document.getElementById("customcity").value;
