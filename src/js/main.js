@@ -22,10 +22,10 @@ const clouds = document.querySelector('.info__item--clouds--js');
 const wind = document.querySelector('.info__item--wind--js');
 const sunrise = document.querySelector('.info__item--sunrise--js');
 const sunset = document.querySelector('.info__item--sunset--js');
-const cities = document.querySelector('.cities');
 const searchButton = document.querySelector(".searchButton");
 const currentlocation = document.querySelector('.current__location');
-const openMenu = document.querySelector('.cities__item--hamburger--js');
+const cities = document.querySelector('.cities');
+const hamburger = document.querySelector('.hamburger--js');
 let city;
 let time = document.querySelector('.current__time');
 var urlWheather;
@@ -55,10 +55,8 @@ window.onload = function () {
     }
 };
 
-openMenu.addEventListener('click', function () {
-    // navigationList.classList.toggle("navigation__list--visible");
-    openMenu.classList.toggle("cities__item");
-    window.alert("ple");
+hamburger.addEventListener('click', function () {
+    cities.classList.toggle("cities--visible");
 });
 
 searchButton.addEventListener('click', function () {

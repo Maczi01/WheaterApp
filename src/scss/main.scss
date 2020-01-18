@@ -73,10 +73,16 @@ body {
 
     &--hamburger {
       //@media (min-width: $phone) {
-      margin: 0 auto;
+      border: none;
+      //background: none;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+
+      //margin: 0 auto;
       font-size: 15px;
       padding-top: 8px;
-      //text-align: center;
+      text-align: center;
       border-radius: 52px;
       width: 62px;
       height: 30px;
@@ -89,6 +95,20 @@ body {
   }
 }
 
+.hamburger {
+  margin: 0 auto;
+  font-size: 15px;
+  padding-top: 8px;
+  //text-align: center;
+  border-radius: 52px;
+  width: 62px;
+  height: 30px;
+  background-color: $yellow;
+  color: $black;
+  @media (min-width: $phone) {
+    display: none;
+  }
+}
 
 .cities {
   display: grid;
@@ -99,10 +119,16 @@ body {
   margin: 0 auto;
   text-align: center;
   @media (max-width: $phone) {
-    display: block;
+    display: none;
     margin: 10px;
-    background-color: red;
-    //grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  &--visible {
+    @media (max-width: $phone) {
+    display: block;
+      //display: none;
+      //margin: 10px;
+    }
   }
 
   &__item {
@@ -119,20 +145,7 @@ body {
     @media (max-width: $phone) {
       //display: none;
     }
-    &--hamburger{
-      margin: 0 auto;
-      font-size: 15px;
-      padding-top: 8px;
-      //text-align: center;
-      border-radius: 52px;
-      width: 62px;
-      height: 30px;
-      background-color: $yellow;
-      color: $black;
-      @media (min-width: $phone) {
-        display: none;
-      }
-    }
+
     &--image {
       //padding: 4px ;
       //align-items: flex-start;
@@ -143,7 +156,7 @@ body {
       position: relative;
       display: flex;
       @media (max-width: $phone) {
-        display: none;
+        //display: none;
       }
     }
 
