@@ -32,13 +32,14 @@ var urlWheather;
 var urlAstro;
 
 window.onload = function () {
-    time.innerHTML = new Date().getHours()-1 + ":" + new Date().getMinutes();
+    time.innerHTML = new Date().getHours() - 1 + ":" + new Date().getMinutes();
     var loc = navigator.geolocation;
     if (loc) {
         loc.getCurrentPosition(function (location) {
             const lat = location.coords.latitude;
             const lon = location.coords.longitude;
             fetch("http://api.weatherapi.com/v1/current.json?key=3f1ad206d1b94436825173623201101&q=" + lat + "," + lon)
+            // fetch("http://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825173623201101&q=" + lat + "," + lon)
                 .then(resp => resp.json())
                 .then(resp => {
                     const info = resp;
@@ -55,13 +56,16 @@ window.onload = function () {
     }
 };
 
-hamburger.addEventListener('click', function () {
+function getListener() {
     cities.classList.toggle("cities--visible");
-});
+}
+
+hamburger.addEventListener('click', getListener);
 
 searchButton.addEventListener('click', function () {
     city = document.getElementById("customcity").value;
     getValues();
+    getListener();
 });
 
 cities.addEventListener('click', function (e) {
@@ -69,16 +73,16 @@ cities.addEventListener('click', function (e) {
         city = e.target.textContent;
         console.log(city);
         getValues();
+        getListener();
     }
+
 });
 
 
 function getValues() {
-  currentlocation.innerHTML = city;
-  urlWheather = "http://api.weatherapi.com/v1/current.json?key=3f1ad206d1b94436825173623201101&q=" + city;
+    currentlocation.innerHTML = city;
+    urlWheather = "http://api.weatherapi.com/v1/current.json?key=3f1ad206d1b94436825173623201101&q=" + city;
     urlAstro = "http://api.weatherapi.com/v1/astronomy.json?key=3f1ad206d1b94436825173623201101&q=" + city + "&dt=2020-01-11";
-    // console.log(city);
-    // console.log(url);
     fetch(urlWheather)
         .then(resp => resp.json())
         .then(resp => {

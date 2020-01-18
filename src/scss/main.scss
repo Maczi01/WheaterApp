@@ -96,13 +96,14 @@ body {
 }
 
 .hamburger {
-  margin: 0 auto;
+  position: absolute;
+  margin: 1rem 0 0 1rem;
   font-size: 15px;
-  padding-top: 8px;
-  //text-align: center;
-  border-radius: 52px;
-  width: 62px;
-  height: 30px;
+  padding-top: 14px;
+  text-align: center;
+  border-radius: 10px;
+  width: 45px;
+  height: 45px;
   background-color: $yellow;
   color: $black;
   @media (min-width: $phone) {
@@ -120,14 +121,16 @@ body {
   text-align: center;
   @media (max-width: $phone) {
     display: none;
-    margin: 10px;
+    margin: 50px;
   }
 
   &--visible {
     @media (max-width: $phone) {
-    display: block;
-      //display: none;
-      //margin: 10px;
+      display: block;
+      position: absolute;
+      background-color: $white;
+      border-radius: 20px;
+      border: solid 1px $black;
     }
   }
 
@@ -135,28 +138,22 @@ body {
     margin: 0 auto;
     font-size: 20px;
     padding-top: 8px;
-    //text-align: center;
     border-radius: 52px;
     width: 180px;
     height: 42px;
     background-color: $green;
     color: $white;
-    //vertical-align: middle;
-    @media (max-width: $phone) {
-      //display: none;
-    }
 
     &--image {
-      //padding: 4px ;
-      //align-items: flex-start;
+
     }
 
     &--search {
-      width: 100%;
+      margin: 0 auto;
+      width: 180px;
       position: relative;
       display: flex;
       @media (max-width: $phone) {
-        //display: none;
       }
     }
 
@@ -189,13 +186,15 @@ body {
   @media (max-width: 640px) {
     grid-template-columns: 1fr 1fr;
     column-gap: 4rem;
+    row-gap: 4rem;
+    padding: 1rem 1rem 2rem 1rem;
+
   }
 
   &__item {
     color: $black;
     font-weight: bold;
     background-color: $white;
-    //display: flex;
     width: 11.25rem;
     height: 102px;
     padding: 8px;
@@ -211,5 +210,4 @@ body {
       display: flex;
     }
   }
-
 }

@@ -393,12 +393,14 @@ body {
           display: none; } }
 
 .hamburger {
-  margin: 0 auto;
+  position: absolute;
+  margin: 1rem 0 0 1rem;
   font-size: 15px;
-  padding-top: 8px;
-  border-radius: 52px;
-  width: 62px;
-  height: 30px;
+  padding-top: 14px;
+  text-align: center;
+  border-radius: 10px;
+  width: 45px;
+  height: 45px;
   background-color: #f5f037;
   color: #464646; }
   @media (min-width: 640px) {
@@ -420,10 +422,14 @@ body {
   @media (max-width: 640px) {
     .cities {
       display: none;
-      margin: 10px; } }
+      margin: 50px; } }
   @media (max-width: 640px) {
     .cities--visible {
-      display: block; } }
+      display: block;
+      position: absolute;
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      border: solid 1px #464646; } }
   .cities__item {
     margin: 0 auto;
     font-size: 20px;
@@ -434,7 +440,8 @@ body {
     background-color: #69FF34;
     color: #FFFFFF; }
     .cities__item--search {
-      width: 100%;
+      margin: 0 auto;
+      width: 180px;
       position: relative;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -471,7 +478,9 @@ body {
       grid-template-columns: 1fr 1fr;
       -webkit-column-gap: 4rem;
          -moz-column-gap: 4rem;
-              column-gap: 4rem; } }
+              column-gap: 4rem;
+      row-gap: 4rem;
+      padding: 1rem 1rem 2rem 1rem; } }
   .info__item {
     color: #464646;
     font-weight: bold;
