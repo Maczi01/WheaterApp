@@ -402,7 +402,9 @@ body {
   text-align: center; }
   @media (max-width: 640px) {
     .cities {
-      display: none; } }
+      display: block;
+      margin: 10px;
+      background-color: red; } }
   .cities__item {
     margin: 0 auto;
     font-size: 20px;
@@ -412,12 +414,27 @@ body {
     height: 42px;
     background-color: #69FF34;
     color: #FFFFFF; }
+    .cities__item--hamburger {
+      margin: 0 auto;
+      font-size: 15px;
+      padding-top: 8px;
+      border-radius: 52px;
+      width: 62px;
+      height: 30px;
+      background-color: #f5f037;
+      color: #464646; }
+      @media (min-width: 640px) {
+        .cities__item--hamburger {
+          display: none; } }
     .cities__item--search {
       width: 100%;
       position: relative;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex; }
+      @media (max-width: 640px) {
+        .cities__item--search {
+          display: none; } }
     .cities__item--input {
       margin: 0 auto;
       font-size: 20px;

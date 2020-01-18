@@ -37,10 +37,12 @@ body {
   margin-top: 20px;
   text-align: center;
   font-size: 6.25rem;
+
   &__location {
     text-align: center;
     font-size: 30px;
   }
+
   &__days {
     display: grid;
     padding: 40px;
@@ -68,24 +70,23 @@ body {
         width: 100px;
       }
     }
+
     &--hamburger {
       //@media (min-width: $phone) {
-        margin: 0 auto;
-        font-size: 15px;
-        padding-top: 8px;
-        //text-align: center;
-        border-radius: 52px;
-        width: 62px;
-        height: 30px;
-        background-color: $yellow;
-        color: $black;
-        @media (min-width: $phone) {
-          display: none;
-        }
+      margin: 0 auto;
+      font-size: 15px;
+      padding-top: 8px;
+      //text-align: center;
+      border-radius: 52px;
+      width: 62px;
+      height: 30px;
+      background-color: $yellow;
+      color: $black;
+      @media (min-width: $phone) {
+        display: none;
+      }
     }
-
   }
-
 }
 
 
@@ -98,7 +99,10 @@ body {
   margin: 0 auto;
   text-align: center;
   @media (max-width: $phone) {
-    display: none;
+    display: block;
+    margin: 10px;
+    background-color: red;
+    //grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 
   &__item {
@@ -112,6 +116,23 @@ body {
     background-color: $green;
     color: $white;
     //vertical-align: middle;
+    @media (max-width: $phone) {
+      //display: none;
+    }
+    &--hamburger{
+      margin: 0 auto;
+      font-size: 15px;
+      padding-top: 8px;
+      //text-align: center;
+      border-radius: 52px;
+      width: 62px;
+      height: 30px;
+      background-color: $yellow;
+      color: $black;
+      @media (min-width: $phone) {
+        display: none;
+      }
+    }
     &--image {
       //padding: 4px ;
       //align-items: flex-start;
@@ -121,6 +142,9 @@ body {
       width: 100%;
       position: relative;
       display: flex;
+      @media (max-width: $phone) {
+        display: none;
+      }
     }
 
     &--input {
@@ -149,7 +173,7 @@ body {
   row-gap: 36px;
   margin: 0 auto;
   text-align: center;
-  @media (max-width: 640px){
+  @media (max-width: 640px) {
     grid-template-columns: 1fr 1fr;
     column-gap: 4rem;
   }

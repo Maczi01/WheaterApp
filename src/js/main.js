@@ -25,7 +25,7 @@ const sunset = document.querySelector('.info__item--sunset--js');
 const cities = document.querySelector('.cities');
 const searchButton = document.querySelector(".searchButton");
 const currentlocation = document.querySelector('.current__location');
-const openMenu = document.querySelector('.current__days--hamburger--js');
+const openMenu = document.querySelector('.cities__item--hamburger--js');
 let city;
 let time = document.querySelector('.current__time');
 var urlWheather;
@@ -56,9 +56,10 @@ window.onload = function () {
 };
 
 openMenu.addEventListener('click', function () {
-    navigationList.classList.toggle("navigation__list--visible");
-
-})
+    // navigationList.classList.toggle("navigation__list--visible");
+    openMenu.classList.toggle("cities__item");
+    window.alert("ple");
+});
 
 searchButton.addEventListener('click', function () {
     city = document.getElementById("customcity").value;
