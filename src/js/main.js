@@ -36,7 +36,7 @@ let city;
 let urlWheather;
 
 window.onload = function () {
-    time.innerHTML = new Date().getHours() + 3 + ":" + new Date().getMinutes() + 1;
+    time.innerHTML = new Date().getHours() + ":" + new Date().getMinutes();
     var loc = navigator.geolocation;
     if (loc) {
         loc.getCurrentPosition(function (location) {
@@ -94,27 +94,53 @@ function getValuesToday() {
         .then(resp => resp.json())
         .then(resp => {
             const info = resp;
+            var dateToshow = new Date(info.location.localtime);
+            time.innerHTML = dateToshow.getHours() + ":" + dateToshow.getMinutes();
             temp.innerHTML = info.current.temp_c + "°C";
             humidity.innerHTML = info.current.humidity + "%";
             clouds.innerHTML = info.current.cloud + "%";
             wind.innerHTML = info.current.wind_kph + " km/h";
-            condition = info.current.condition.text;
-            console.log(condition);
+            condition = info.current.condition.code;
+            console.log(info.current.condition.text);
             sunrise.innerHTML = info.forecast.forecastday[0].astro.sunrise;
             sunset.innerHTML = info.forecast.forecastday[0].astro.sunset;
+            setBackground(condition);
+
         })
         .catch(err => {
             console.error("Błąd ładowania danych")
         });
+
+}
+
+function setBackground(condition) {
     switch (condition) {
-        case "Partly cloudy":
-            setBackgroundCloudy();
+        case 1000:
+            main.style.backgroundImage = 'url("../assets/img/sunny.jpg")';
             break;
-        case "Heavy snow":
-            setBackgroundSnowly();
+        case 1003:
+            main.style.backgroundImage = 'url("../assets/img/cloudy.jpg")';
             break;
-        case "Sunny":
-            setBackgroundSunny();
+        case 1006:
+            main.style.backgroundImage = 'url("../assets/img/cloudy.jpg")';
+            break;
+        case 1009:
+            main.style.backgroundImage = 'url("../assets/img/overcast.jpg")';
+            break;
+        case 1030:
+            main.style.backgroundImage = 'url("../assets/img/mist.jpg")';
+            break;
+        case 1063:
+            main.style.backgroundImage = 'url("../assets/img/patchyrain.jpg")';
+            break;
+        case 1066:
+            main.style.backgroundImage = 'url("../assets/img/patchysnow.jpg")';
+            break;
+        case 1189:
+            main.style.backgroundImage = 'url("../assets/img/moderaterain.jpg")';
+            break;
+        case 1258:
+            main.style.backgroundImage = 'url("../assets/img/snowshower.jpg")';
             break;
         default:
             main.style.backgroundColor = '$blue';
@@ -131,24 +157,17 @@ function getValuesTomorrow() {
             temp.innerHTML = info.forecast.forecastday[1].day.maxtemp_c + "°C";
             humidity.innerHTML = info.forecast.forecastday[1].day.avghumidity + "%";
             clouds.innerHTML = "";
+            condition = info.current.condition.code;
             wind.innerHTML = info.forecast.forecastday[1].day.maxwind_kph + " km/h";
             sunrise.innerHTML = info.forecast.forecastday[1].astro.sunrise;
             sunset.innerHTML = info.forecast.forecastday[1].astro.sunset;
+            setBackground(condition);
         })
         .catch(err => {
             console.error("Błąd ładowania danych")
         });
 }
 
-function setBackgroundSnowly() {
-    main.style.backgroundImage = 'url("../assets/img/snow.jfif")';
-}
-function setBackgroundCloudy() {
-    main.style.backgroundImage = 'url("../assets/img/rain.jpg")';
-}
-function setBackgroundSunny() {
-    main.style.backgroundImage = 'url("../assets/img/sunny.jpg")';
-}
 
 
 

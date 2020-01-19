@@ -347,7 +347,8 @@ body {
 .current {
   margin-top: 20px;
   text-align: center;
-  font-size: 6.25rem; }
+  font-size: 6.25rem;
+  text-shadow: black 0.1em 0.1em 0.2em; }
   .current__location {
     text-align: center;
     font-size: 30px; }
@@ -363,6 +364,7 @@ body {
     margin: 0 auto;
     text-align: center; }
     .current__days--today, .current__days--tomorrow {
+      text-shadow: none;
       margin: 0 auto;
       font-size: 20px;
       padding-top: 8px;
