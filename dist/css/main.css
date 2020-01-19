@@ -337,6 +337,7 @@ body {
   margin: 0 auto;
   border-radius: 30px;
   background-color: #72BBFF;
+  background-image: url("../assets/img/wind.jpg");
   color: #FFFFFF;
   font-size: 40px; }
   @media (max-width: 640px) {
@@ -401,7 +402,7 @@ body {
   border-radius: 10px;
   width: 45px;
   height: 45px;
-  background-color: #f5f037;
+  background-color: #69FF34;
   color: #464646; }
   @media (min-width: 640px) {
     .hamburger {
@@ -489,7 +490,8 @@ body {
     height: 102px;
     padding: 8px;
     font-size: 1rem;
-    border-radius: 10px; }
+    border-radius: 10px;
+    border: 1px solid #464646; }
     .info__item--value {
       margin-top: -2px;
       font-size: 1.75rem; }
