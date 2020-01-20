@@ -26,6 +26,13 @@ const searchButton = document.querySelector(".searchButton");
 const currentlocation = document.querySelector('.current__location');
 const cities = document.querySelector('.cities');
 const hamburger = document.querySelector('.hamburger--js');
+const settings = document.querySelector('.settings--js');
+var modal = document.getElementById("myModal");
+
+settings.onclick = function() {
+    modal.style.display = "block";
+}
+
 const today = document.querySelector(".current__days--today");
 const tomorrow = document.querySelector(".current__days--tomorrow");
 const time = document.querySelector('.current__time');
@@ -37,7 +44,7 @@ let urlWheather;
 
 window.onload = function () {
     time.innerHTML = new Date().getHours() + ":" + new Date().getMinutes();
-    var loc = navigator.geolocation;
+    let loc = navigator.geolocation;
     if (loc) {
         loc.getCurrentPosition(function (location) {
             const lat = location.coords.latitude;
@@ -94,8 +101,8 @@ function getValuesToday() {
         .then(resp => resp.json())
         .then(resp => {
             const info = resp;
-            var dateToshow = new Date(info.location.localtime);
-            time.innerHTML = dateToshow.getHours() + ":" + dateToshow.getMinutes();
+            // var dateToshow = new Date(info.location.localtime);
+            // time.innerHTML = dateToshow.getHours() + ":" + dateToshow.getMinutes();
             temp.innerHTML = info.current.temp_c + "°C";
             humidity.innerHTML = info.current.humidity + "%";
             clouds.innerHTML = info.current.cloud + "%";

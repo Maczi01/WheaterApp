@@ -37,8 +37,9 @@
 <body>
 <main class="main">
         <section class="hamburger hamburger--js">☰</section>
-    <section class="cities">
+        <section type="button" data-toggle="modal" data-target="#myModal" class="settings settings--js"></section>
 
+    <section class="cities">
         <section class="cities__item">Wroclaw</section>
         <section class="cities__item" id="a">Katowice</section>
         <section class="cities__item">Krakow</section>
@@ -50,8 +51,19 @@
                 <i class="fa fa-search"></i>
             </button>
         </section>
-        
     </section>
+
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+
+    </div>
+
     <section class="current">
         <section class="current__days">
             <section class="current__days--today">Today</section>

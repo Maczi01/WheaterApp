@@ -39,6 +39,7 @@ body {
   text-align: center;
   font-size: 6.25rem;
   text-shadow: black 0.1em 0.1em 0.2em;
+
   &__location {
     text-align: center;
     font-size: 30px;
@@ -51,6 +52,7 @@ body {
     column-gap: 1rem;
     margin: 0 auto;
     text-align: center;
+
     &--today, &--tomorrow {
       text-shadow: none;
       margin: 0 auto;
@@ -106,9 +108,31 @@ body {
   }
 }
 
+.settings {
+  padding-top: 14px;
+  background-color: rgb(50,190, 166);
+  display: block;
+  position: relative;
+  left: 42rem;
+  top: 1rem;
+  background-image: url("../assets/img/settings.svg");
+  //margin: 1rem 0 0 70rem;
+  @media (max-width: $phone) {
+    left: 23rem;
+    top: 1rem;
+  }
+  //margin: 1rem 0 0 43rem;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 10px;
+  width: 45px;
+  height: 45px;
+  color: $black;
+}
+
 .cities {
   display: grid;
-  padding: 40px;
+  padding: 60px 40px 40px 40px;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 64px;
   row-gap: 36px;
@@ -196,6 +220,7 @@ body {
     font-size: 1rem;
     border-radius: 10px;
     border: 1px solid $black;
+
     &--value {
       margin-top: -2px;
       font-size: 1.75rem;
@@ -205,4 +230,42 @@ body {
       display: flex;
     }
   }
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
