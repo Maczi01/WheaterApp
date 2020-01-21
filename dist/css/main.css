@@ -336,7 +336,7 @@ body {
 .main {
   margin: 0 auto;
   border-radius: 30px;
-  background-color: #72BBFF;
+  background-color: #3b9eff;
   background-image: url("../assets/img/wind.jpg");
   color: #FFFFFF;
   font-size: 40px; }
@@ -428,6 +428,27 @@ body {
     .settings {
       left: 23rem;
       top: 1rem; } }
+
+.settings__list {
+  display: block;
+  position: absolute;
+  left: 44rem;
+  top: 1rem;
+  width: 200px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  border: solid 1px #464646; }
+
+.settings__item {
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 8px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  text-align: center;
+  background-color: #3b9eff;
+  color: #FFFFFF; }
 
 .cities {
   display: -ms-grid;
