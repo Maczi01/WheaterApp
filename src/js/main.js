@@ -25,12 +25,20 @@ const sunset = document.querySelector('.info__item--sunset--js');
 const searchButton = document.querySelector(".searchButton");
 const currentlocation = document.querySelector('.current__location');
 const cities = document.querySelector('.cities');
+const settingsList = document.querySelector('.settings__list');
 const hamburger = document.querySelector('.hamburger--js');
 const settings = document.querySelector('.settings--js');
-var modal = document.getElementById("myModal");
+const about = document.querySelector(".settings__item--about");
+const modal = document.getElementById("myModal");
 
-settings.onclick = function() {
+about.onclick = function() {
     modal.style.display = "block";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 
 const today = document.querySelector(".current__days--today");
@@ -74,6 +82,8 @@ tomorrow.addEventListener('click', function () {
 
 hamburger.addEventListener('click', showCityList);
 
+settings.addEventListener('click', showSettingsList);
+
 searchButton.addEventListener('click', function () {
     city = document.getElementById("customcity").value;
     getValuesToday();
@@ -92,6 +102,10 @@ cities.addEventListener('click', function (e) {
 
 function showCityList() {
     cities.classList.toggle("cities--visible");
+}
+
+function showSettingsList() {
+    settingsList.classList.toggle("settings__list--visible");
 }
 
 function getValuesToday() {

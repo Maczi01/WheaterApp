@@ -95,7 +95,7 @@ body {
 .hamburger {
   position: absolute;
   margin: 1rem 0 0 1rem;
-  font-size: 15px;
+  font-size: 20px;
   padding-top: 14px;
   text-align: center;
   border-radius: 10px;
@@ -116,12 +116,10 @@ body {
   left: 42rem;
   top: 1rem;
   background-image: url("../assets/img/settings.svg");
-  //margin: 1rem 0 0 70rem;
   @media (max-width: $phone) {
     left: 23rem;
     top: 1rem;
   }
-  //margin: 1rem 0 0 43rem;
   font-size: 15px;
   text-align: center;
   border-radius: 10px;
@@ -131,16 +129,27 @@ body {
 }
 
 .settings__list {
-  display: block;
-  //display: none;
-  position: absolute;
-  //position: relative;
-  left: 44rem;
-  top: 1rem;
-  width: 200px;
-  background-color: $white;
-  border-radius: 20px;
-  border: solid 1px $black;
+  display: none;
+
+  &--visible {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    //position: relative;
+    left: 38rem;
+    @media (max-width: $phone) {
+      left: 5rem;
+      top: 12rem;
+      margin: 0 auto;
+      padding: 60px 40px 40px 40px;
+    }
+    margin: 0 auto;
+    padding: 60px 40px 40px 40px;
+    top: 1rem;
+    background-color: $white;
+    border-radius: 20px;
+    border: solid 1px $black;
+  }
 }
 
 .settings__item {
@@ -149,11 +158,22 @@ body {
   padding-top: 8px;
   border-radius: 52px;
   width: 180px;
-
   height: 42px;
   text-align: center;
   background-color: $blue;
   color: $white;
+
+  &--about {
+    margin: 0 auto;
+    font-size: 20px;
+    padding-top: 8px;
+    border-radius: 52px;
+    width: 180px;
+    height: 42px;
+    text-align: center;
+    background-color: $blue;
+    color: $white;
+  }
 }
 
 
@@ -279,6 +299,7 @@ body {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
+  color: $black;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 

@@ -8,6 +8,6 @@
 * you can choose the weather for one of several cities or use the search engine
 * the application uses [Wheather API](https://www.weatherapi.com/)
 * https://github.com/Maczi01/WheaterApp/blob/master/src/assets/img/index.png?raw=true
-* The website will be available as desktop and mobile versions
+* The website will be available as desktop, mobile version and PWA
 
 ![screenshot](https://github.com/Maczi01/WheaterApp/blob/master/src/assets/img/index.png?raw=true)

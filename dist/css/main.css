@@ -398,7 +398,7 @@ body {
 .hamburger {
   position: absolute;
   margin: 1rem 0 0 1rem;
-  font-size: 15px;
+  font-size: 20px;
   padding-top: 14px;
   text-align: center;
   border-radius: 10px;
@@ -430,14 +430,24 @@ body {
       top: 1rem; } }
 
 .settings__list {
-  display: block;
-  position: absolute;
-  left: 44rem;
-  top: 1rem;
-  width: 200px;
-  background-color: #FFFFFF;
-  border-radius: 20px;
-  border: solid 1px #464646; }
+  display: none; }
+  .settings__list--visible {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    left: 38rem;
+    margin: 0 auto;
+    padding: 60px 40px 40px 40px;
+    top: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border: solid 1px #464646; }
+    @media (max-width: 640px) {
+      .settings__list--visible {
+        left: 5rem;
+        top: 12rem;
+        margin: 0 auto;
+        padding: 60px 40px 40px 40px; } }
 
 .settings__item {
   margin: 0 auto;
@@ -449,6 +459,16 @@ body {
   text-align: center;
   background-color: #3b9eff;
   color: #FFFFFF; }
+  .settings__item--about {
+    margin: 0 auto;
+    font-size: 20px;
+    padding-top: 8px;
+    border-radius: 52px;
+    width: 180px;
+    height: 42px;
+    text-align: center;
+    background-color: #3b9eff;
+    color: #FFFFFF; }
 
 .cities {
   display: -ms-grid;
@@ -570,6 +590,7 @@ body {
   /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
+  color: #464646;
   width: 80%;
   /* Could be more or less, depending on screen size */ }
 
