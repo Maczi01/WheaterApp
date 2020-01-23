@@ -94,9 +94,9 @@ body {
 
 .hamburger {
   position: absolute;
-  margin: 1rem 0 0 1rem;
+  margin: 2rem 0 0 2rem;
   font-size: 20px;
-  padding-top: 14px;
+  padding-top: 12px;
   text-align: center;
   border-radius: 10px;
   width: 45px;
@@ -117,8 +117,8 @@ body {
   top: 1rem;
   background-image: url("../assets/img/settings.svg");
   @media (max-width: $phone) {
-    left: 23rem;
-    top: 1rem;
+    left: 22rem;
+    top: 2rem;
   }
   font-size: 15px;
   text-align: center;
@@ -175,7 +175,6 @@ body {
     color: $white;
   }
 }
-
 
 .cities {
   display: grid;
@@ -267,14 +266,24 @@ body {
     font-size: 1rem;
     border-radius: 10px;
     border: 1px solid $black;
+    @media (max-width: 640px) {
+      height: auto;
+        font-size: 1.25rem;
+    }
 
     &--value {
+
       margin-top: -2px;
       font-size: 1.75rem;
+
     }
 
     &--container {
       display: flex;
+      @media (max-width: 640px) {
+        display: block;
+
+      }
     }
   }
 }

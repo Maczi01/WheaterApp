@@ -36,10 +36,10 @@ about.onclick = function() {
 }
 
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
         modal.style.display = "none";
     }
-}
+};
 
 const today = document.querySelector(".current__days--today");
 const tomorrow = document.querySelector(".current__days--tomorrow");
