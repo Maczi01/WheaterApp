@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "predeploy": "gulp build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
+    "jasmine": "^3.5.0",
     "node-sass": "^4.13.1",
     "through2": "^3.0.1",
     "vinyl-named": "^1.1.0",
@@ -48,5 +50,7 @@
       "@babel/preset-env"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "gulp-jasmine-browser": "^4.1.0"
+  }
 }

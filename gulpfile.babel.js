@@ -96,3 +96,12 @@ gulp.task(
 
 gulp.task("build", gulp.series("sass", "html", "js", "assets", "pwa"));
 gulp.task("default", gulp.series("serve"));
+
+// gulp = require('gulp');
+var jasmineBrowser = require('gulp-jasmine-browser');
+
+gulp.task('jasmine', function() {
+    return gulp.src(['src/test/*.js', 'spec/**/*_spec.js'])
+        .pipe(jasmineBrowser.specRunner())
+        .pipe(jasmineBrowser.server({port: 8888}));
+});

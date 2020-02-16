@@ -36,12 +36,19 @@
 </head>
 <body>
 <main class="main">
-        <section class="hamburger hamburger--js">☰</section>
-        <section  data-toggle="modal" data-target="#myModal" class="settings settings--js"></section>
+<!--    <section class="hamburger hamburger&#45;&#45;js">☰</section>-->
+
+    <button class="hamburger hamburger--js" aria-label="Menu">
+  <span class="hamburger__container" tabindex="-1">
+    <span class="hamburger__bars"></span>
+  </span>
+    </button>
+
+    <section data-toggle="modal" data-target="#myModal" class="settings settings--js"></section>
     <section class="settings__list">
-    <section class="settings__item">Zmień format daty</section>
-    <section class="settings__item">Lokalizacja</section>
-    <section class="settings__item--about">O programie</section>
+        <section class="settings__item">Zmień format daty</section>
+        <section class="settings__item">Lokalizacja</section>
+        <section class="settings__item--about">O programie</section>
     </section>
     <section class="cities">
         <section class="cities__item">Wroclaw</section>
@@ -64,7 +71,6 @@
         <div class="modal-content">
             <p>Application designed by Mati</p>
         </div>
-
     </div>
 
     <section class="current">
@@ -73,8 +79,8 @@
             <section class="current__days--tomorrow">Tomorrow</section>
 
         </section>
-        <section class="current__time">  </section>
-        <section class="current__location">  </section>
+        <section class="current__time"></section>
+        <section class="current__location"></section>
     </section>
     <section class="info">
         <section class="info__item">

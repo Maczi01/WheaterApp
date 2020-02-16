@@ -30,17 +30,6 @@ const hamburger = document.querySelector('.hamburger--js');
 const settings = document.querySelector('.settings--js');
 const about = document.querySelector(".settings__item--about");
 const modal = document.getElementById("myModal");
-
-about.onclick = function() {
-    modal.style.display = "block";
-}
-
-window.onclick = function(event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-};
-
 const today = document.querySelector(".current__days--today");
 const tomorrow = document.querySelector(".current__days--tomorrow");
 const time = document.querySelector('.current__time');
@@ -69,6 +58,16 @@ window.onload = function () {
         });
     } else {
         console.log("Nie udostępniono lokalizacji");
+    }
+};
+
+about.onclick = function () {
+    modal.style.display = "block";
+};
+
+window.onclick = function (event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
     }
 };
 
@@ -101,6 +100,7 @@ cities.addEventListener('click', function (e) {
 });
 
 function showCityList() {
+    hamburger.classList.toggle('hamburger--active');
     cities.classList.toggle("cities--visible");
 }
 
@@ -188,6 +188,7 @@ function getValuesTomorrow() {
             console.error("Błąd ładowania danych")
         });
 }
+
 
 
 
