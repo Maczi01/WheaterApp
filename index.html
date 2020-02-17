@@ -33,28 +33,57 @@
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
 </head>
 <body>
 <main class="main">
+    <!--    <section class="hamburger hamburger&#45;&#45;js">☰</section>-->
+
+    <button class="hamburger hamburger--js" aria-label="Menu">
+  <span class="hamburger__container" tabindex="-1">
+    <span class="hamburger__bars"></span>
+  </span>
+    </button>
+
+    <section data-toggle="modal" data-target="#myModal" class="settings settings--js">
+        <img class="settings__image" src="../assets/img/settings.svg" alt="settings button">
+    </section>
+    <section class="settings__list">
+        <section class="settings__item">Zmień format daty</section>
+        <section class="settings__item">Lokalizacja</section>
+        <section class="settings__item">Edytuj listę miast</section>
+        <section class="settings__item--about">O programie</section>
+    </section>
     <section class="cities">
-        <section class="cities__item">
-            Wroclaw
-        </section>
+        <section class="cities__item">Wroclaw</section>
         <section class="cities__item" id="a">Katowice</section>
         <section class="cities__item">Krakow</section>
         <section class="cities__item">Warszawa</section>
         <section class="cities__item">Torun</section>
         <section class="cities__item--search">
-                <input type="search" class="cities__item--input" id="customcity" name="customcity" placeholder=" Find city">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button>
+            <input type="search" class="cities__item--input" id="customcity" name="customcity" placeholder=" Find city">
+            <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
         </section>
     </section>
+
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <p>Application designed by Mati</p>
+        </div>
+    </div>
+
     <section class="current">
-        <section class="current__time">11:21</section>
-        <section class="current__location">Current city</section>
+        <section class="current__days">
+            <section class="current__days--today">Today</section>
+            <section class="current__days--tomorrow">Tomorrow</section>
+
+        </section>
+        <section class="current__time"></section>
+        <section class="current__location"></section>
     </section>
     <section class="info">
         <section class="info__item">
@@ -67,7 +96,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/humidity.svg" height="48" width="48" class="info__item--humidity">
+                <img src="assets/img/humidity.svg" height="48" width="48" class="info__item--humidity">
                 <p>Wilgotność</p>
             </div>
             <p class="info__item--value info__item--humidity--js"></p>
@@ -75,7 +104,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/clouds.svg" height="48" width="48" class="info__item--clouds">
+                <img src="assets/img/clouds.svg" height="48" width="48" class="info__item--clouds">
                 <p>Zachmurzenie</p>
             </div>
             <p class="info__item--value info__item--clouds--js"></p>
@@ -83,7 +112,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/wind.svg" height="48" width="48" class="info__item--wind">
+                <img src="assets/img/wind.svg" height="48" width="48" class="info__item--wind">
                 <p>Wiatr</p>
             </div>
             <p class="info__item--value info__item--wind--js"></p>
@@ -91,7 +120,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/sunrise.svg" height="48" width="48" class="info__item--sunrise">
+                <img src="assets/img/sunrise.svg" height="48" width="48" class="info__item--sunrise">
                 <p class="info__item--text">Wschód słońca</p>
             </div>
             <p class="info__item--value info__item--sunrise--js"></p>
@@ -99,12 +128,11 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="../assets/img/sunset.svg" height="48" width="48" class="info__item--sunset">
+                <img src="assets/img/sunset.svg" height="48" width="48" class="info__item--sunset">
                 <p>Zachód słońca</p>
             </div>
             <p class="info__item--value info__item--sunset--js"></p>
         </section>
-        <!--180 * 102-->
     </section>
 </main>
 <script src="js/main.js"></script>
