@@ -9,6 +9,6 @@
 * the application uses [Wheather API](https://www.weatherapi.com/)
 * https://github.com/Maczi01/WheaterApp/blob/master/src/assets/img/index.png?raw=true
 * the website will be available as desktop, mobile version and PWA
-* project created with using Webstorm
+* project created with using Webstorm, to Rest Api I used Postman.
 
 ![screenshot](https://github.com/Maczi01/WheaterApp/blob/master/src/assets/img/index.png?raw=true)

@@ -41,6 +41,7 @@ let city;
 let urlWheather;
 
 window.onload = function () {
+    // generateCitiesList();
     time.innerHTML = new Date().getHours() + ":" + new Date().getMinutes();
     let loc = navigator.geolocation;
     if (loc) {
@@ -87,7 +88,7 @@ settings.addEventListener('click', showSettingsList);
 searchButton.addEventListener('click', function () {
     city = document.getElementById("customcity").value;
     getValuesToday();
-    showCityList();
+    // showCityList();
 });
 
 cities.addEventListener('click', function (e) {
@@ -95,7 +96,7 @@ cities.addEventListener('click', function (e) {
         city = e.target.textContent;
         console.log(city);
         getValuesToday();
-        showCityList();
+        // showCityList();
     }
 
 });
@@ -104,8 +105,20 @@ function showCityList() {
     // if(modal.style.display==='block'){
     hamburger.classList.toggle('hamburger--active');
     cities.classList.toggle("cities--visible");
+    // generateCitiesList();
     // }
 }
+
+
+// function generateCitiesList() {
+//     citiesList.forEach(e =>{
+//         let element = document.createElement('section')
+//         cities.appendChild(element)
+//         element.classList.add('cities__item')
+//         element.innerText = e;
+//
+//     })
+// }
 
 function showSettingsList() {
     settingsList.classList.toggle("settings__list--visible");

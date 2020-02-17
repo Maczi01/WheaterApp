@@ -461,7 +461,7 @@ body {
     z-index: 1;
     position: absolute;
     left: 38rem;
-    margin: 0 auto;
+    margin: 45px 0 0 0;
     padding: 60px 40px 40px 40px;
     top: 1rem;
     background-color: #FFFFFF;
@@ -505,7 +505,7 @@ body {
      -moz-column-gap: 64px;
           column-gap: 64px;
   row-gap: 36px;
-  margin: 0 auto;
+  margin-top: 30px;
   text-align: center; }
   @media (max-width: 640px) {
     .cities {
@@ -527,6 +527,9 @@ body {
       border-radius: 20px;
       border: solid 1px #464646; } }
   .cities__item {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
     margin: 0 auto;
     font-size: 20px;
     padding-top: 8px;
@@ -536,6 +539,9 @@ body {
     background-color: #69FF34;
     color: #FFFFFF; }
     .cities__item--search {
+      -webkit-box-ordinal-group: 0;
+          -ms-flex-order: -1;
+              order: -1;
       margin: 0 auto;
       width: 180px;
       position: relative;
@@ -588,7 +594,7 @@ body {
     color: #464646;
     font-weight: bold;
     background-color: #FFFFFF;
-    width: 9.5rem;
+    width: 11.25rem;
     height: 102px;
     padding: 8px;
     font-size: 1rem;
@@ -597,7 +603,8 @@ body {
     @media (max-width: 640px) {
       .info__item {
         height: auto;
-        font-size: 1.25rem; } }
+        font-size: 1.25rem;
+        width: 9.5rem; } }
     .info__item--value {
       margin-top: -2px;
       font-size: 1.75rem; }
@@ -746,5 +753,10 @@ body {
     -o-transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
     transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
     transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out, -webkit-transform 220ms 120ms ease-in-out; }
+
+.cities__item:hover {
+  opacity: 0.5;
+  border: 1px solid black;
+  background: rgba(86, 247, 255, 0.5); }
 
 /*# sourceMappingURL=main.css.map */
