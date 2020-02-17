@@ -24,13 +24,19 @@ body {
 
 .main {
   margin: 0 auto;
+  display: grid;
+  grid-template-rows: 16px 1fr 300px 1fr 16px;
+  grid-template-columns: 40px 1fr 40px;
   border-radius: 30px;
   background-color: $blue;
-  background-image: url("../assets/img/wind.jpg");
+  //background-image: url("../assets/img/start.jpg");
   color: $white;
   font-size: 40px;
   @media (max-width: $phone) {
-    margin: 30px;
+    grid-template-rows: 16px auto 1fr auto 16px;
+    grid-template-columns: 20px 1fr 20px;
+
+    margin: 20px;
   }
 }
 
@@ -39,15 +45,19 @@ body {
   text-align: center;
   font-size: 6.25rem;
   text-shadow: black 0.1em 0.1em 0.2em;
+  grid-column-start: 2;
+  grid-row-start: 3;
 
   &__location {
     text-align: center;
     font-size: 30px;
+    padding-bottom: 16px;
   }
 
   &__days {
     display: grid;
-    padding: 40px;
+    //padding: 40px;
+    padding: 40px 0 40px 0;
     grid-template-columns: 1fr 1fr;
     column-gap: 1rem;
     margin: 0 auto;
@@ -109,16 +119,21 @@ body {
 // }
 
 .settings {
-  padding-top: 14px;
+  //padding-top: 14px;
   background-color: rgb(50, 190, 166);
   display: block;
-  position: relative;
-  left: 42rem;
-  top: 1rem;
-  background-image: url("../assets/img/settings.svg");
+  //position: relative;
+  grid-column-start: 3;
+  grid-row-start: 2;
+  //left: 42rem;
+  //top: 1rem;    m
+  margin-left: -45px;
+
+  //background-image: url("../assets/img/settings.svg");
   @media (max-width: $phone) {
-    left: 22rem;
-    top: 2rem;
+    //left: 22rem;
+    //top: 2rem;
+    //margin-left: -45px;
   }
   font-size: 15px;
   text-align: center;
@@ -127,6 +142,32 @@ body {
   height: 45px;
   color: $black;
 }
+
+.settings__image{
+  &:after{
+
+  }
+  transform: rotate(0deg);
+  transition: transform 500ms linear;
+}
+
+.settings__image--active {
+  transform: rotate(180deg);
+  transition: transform 200ms linear;
+  //
+  //&:before {
+  //  top: 0;
+  //  transition: top 100ms ease-out;
+  //}
+
+  &:after {
+    bottom: 0;
+    transform: rotate(-90deg);
+    transition: bottom 100ms ease-out,
+    transform 220ms 120ms ease-in-out;
+  }
+}
+
 
 .settings__list {
   display: none;
@@ -186,14 +227,18 @@ body {
   text-align: center;
 
   @media (max-width: $phone) {
-    display: none;
-    //visibility: hidden;
+    //display: none;
+    grid-template-columns: 1fr;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 500ms;
     margin: 50px;
   }
 
   &--visible {
     @media (max-width: $phone) {
-
+      opacity: 1;
+      visibility: visible;
 
       display: block;
       position: absolute;
@@ -233,12 +278,15 @@ body {
       width: 180px;
       height: 42px;
       color: black;
+      border: solid 1px black;
     }
   }
 }
 
 .searchButton {
   font-size: 20px;
+  height: 42px;
+  border: solid 1px black;
   margin-left: -30px;
   border-bottom-right-radius: 26px;
   border-top-right-radius: 26px;
@@ -252,11 +300,14 @@ body {
   row-gap: 36px;
   margin: 0 auto;
   text-align: center;
+  grid-column-start: 2;
+  grid-row-start: 4;
+
   @media (max-width: 640px) {
     grid-template-columns: 1fr 1fr;
-    column-gap: 4rem;
-    row-gap: 4rem;
-    padding: 1rem 1rem 2rem 1rem;
+    column-gap: 2rem;
+    row-gap: 3rem;
+    padding: 1rem 2rem 3rem 2rem;
 
   }
 
@@ -264,7 +315,8 @@ body {
     color: $black;
     font-weight: bold;
     background-color: $white;
-    width: 11.25rem;
+    //width: 11.25rem;
+    width: 9.5rem;
     height: 102px;
     padding: 8px;
     font-size: 1rem;
@@ -336,10 +388,12 @@ body {
 
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxx
 .hamburger {
-  position: absolute;
-  margin: 2rem 0 0 2rem;
+  //position: absolute;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  //margin: 2rem 0 0 2rem;
   font-size: 20px;
-  padding-top: 12px;
+  //padding-top: 12px;
   text-align: center;
   border-radius: 10px;
   width: 45px;
@@ -400,7 +454,7 @@ body {
 .hamburger--active {
   .hamburger__bars {
     transform: rotate(225deg);
-    transition: transform 220ms 120ms ease-in-out;
+    transition: transform 700ms 120ms ease-in-out;
 
     &:before {
       top: 0;

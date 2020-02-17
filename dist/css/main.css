@@ -335,27 +335,41 @@ body {
 
 .main {
   margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 16px 1fr 300px 1fr 16px;
+  grid-template-rows: 16px 1fr 300px 1fr 16px;
+  -ms-grid-columns: 40px 1fr 40px;
+  grid-template-columns: 40px 1fr 40px;
   border-radius: 30px;
-  background-color: #3b9eff;
-  background-image: url("../assets/img/wind.jpg");
+  background-color: #56f7ff;
   color: #FFFFFF;
   font-size: 40px; }
   @media (max-width: 640px) {
     .main {
-      margin: 30px; } }
+      -ms-grid-rows: 16px auto 1fr auto 16px;
+      grid-template-rows: 16px auto 1fr auto 16px;
+      -ms-grid-columns: 20px 1fr 20px;
+      grid-template-columns: 20px 1fr 20px;
+      margin: 20px; } }
 
 .current {
   margin-top: 20px;
   text-align: center;
   font-size: 6.25rem;
-  text-shadow: black 0.1em 0.1em 0.2em; }
+  text-shadow: black 0.1em 0.1em 0.2em;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  -ms-grid-row: 3;
+      grid-row-start: 3; }
   .current__location {
     text-align: center;
-    font-size: 30px; }
+    font-size: 30px;
+    padding-bottom: 16px; }
   .current__days {
     display: -ms-grid;
     display: grid;
-    padding: 40px;
+    padding: 40px 0 40px 0;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     -webkit-column-gap: 1rem;
@@ -396,23 +410,49 @@ body {
           display: none; } }
 
 .settings {
-  padding-top: 14px;
   background-color: #32bea6;
   display: block;
-  position: relative;
-  left: 42rem;
-  top: 1rem;
-  background-image: url("../assets/img/settings.svg");
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  margin-left: -45px;
   font-size: 15px;
   text-align: center;
   border-radius: 10px;
   width: 45px;
   height: 45px;
   color: #464646; }
-  @media (max-width: 640px) {
-    .settings {
-      left: 22rem;
-      top: 2rem; } }
+
+.settings__image {
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 500ms linear;
+  transition: -webkit-transform 500ms linear;
+  -o-transition: transform 500ms linear;
+  transition: transform 500ms linear;
+  transition: transform 500ms linear, -webkit-transform 500ms linear; }
+
+.settings__image--active {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 200ms linear;
+  transition: -webkit-transform 200ms linear;
+  -o-transition: transform 200ms linear;
+  transition: transform 200ms linear;
+  transition: transform 200ms linear, -webkit-transform 200ms linear; }
+  .settings__image--active:after {
+    bottom: 0;
+    -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    -webkit-transition: bottom 100ms ease-out, -webkit-transform 220ms 120ms ease-in-out;
+    transition: bottom 100ms ease-out, -webkit-transform 220ms 120ms ease-in-out;
+    -o-transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
+    transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
+    transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out, -webkit-transform 220ms 120ms ease-in-out; }
 
 .settings__list {
   display: none; }
@@ -442,7 +482,7 @@ body {
   width: 180px;
   height: 42px;
   text-align: center;
-  background-color: #3b9eff;
+  background-color: #56f7ff;
   color: #FFFFFF; }
   .settings__item--about {
     margin: 0 auto;
@@ -452,7 +492,7 @@ body {
     width: 180px;
     height: 42px;
     text-align: center;
-    background-color: #3b9eff;
+    background-color: #56f7ff;
     color: #FFFFFF; }
 
 .cities {
@@ -469,10 +509,18 @@ body {
   text-align: center; }
   @media (max-width: 640px) {
     .cities {
-      display: none;
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+      visibility: hidden;
+      opacity: 0;
+      -webkit-transition: opacity 500ms;
+      -o-transition: opacity 500ms;
+      transition: opacity 500ms;
       margin: 50px; } }
   @media (max-width: 640px) {
     .cities--visible {
+      opacity: 1;
+      visibility: visible;
       display: block;
       position: absolute;
       background-color: #FFFFFF;
@@ -500,10 +548,13 @@ body {
       border-radius: 52px;
       width: 180px;
       height: 42px;
-      color: black; }
+      color: black;
+      border: solid 1px black; }
 
 .searchButton {
   font-size: 20px;
+  height: 42px;
+  border: solid 1px black;
   margin-left: -30px;
   border-bottom-right-radius: 26px;
   border-top-right-radius: 26px; }
@@ -519,21 +570,25 @@ body {
           column-gap: 64px;
   row-gap: 36px;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  -ms-grid-row: 4;
+      grid-row-start: 4; }
   @media (max-width: 640px) {
     .info {
       -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-      -webkit-column-gap: 4rem;
-         -moz-column-gap: 4rem;
-              column-gap: 4rem;
-      row-gap: 4rem;
-      padding: 1rem 1rem 2rem 1rem; } }
+      -webkit-column-gap: 2rem;
+         -moz-column-gap: 2rem;
+              column-gap: 2rem;
+      row-gap: 3rem;
+      padding: 1rem 2rem 3rem 2rem; } }
   .info__item {
     color: #464646;
     font-weight: bold;
     background-color: #FFFFFF;
-    width: 11.25rem;
+    width: 9.5rem;
     height: 102px;
     padding: 8px;
     font-size: 1rem;
@@ -604,10 +659,11 @@ body {
   cursor: pointer; }
 
 .hamburger {
-  position: absolute;
-  margin: 2rem 0 0 2rem;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
   font-size: 20px;
-  padding-top: 12px;
   text-align: center;
   border-radius: 10px;
   width: 45px;
@@ -670,11 +726,11 @@ body {
   -webkit-transform: rotate(225deg);
       -ms-transform: rotate(225deg);
           transform: rotate(225deg);
-  -webkit-transition: -webkit-transform 220ms 120ms ease-in-out;
-  transition: -webkit-transform 220ms 120ms ease-in-out;
-  -o-transition: transform 220ms 120ms ease-in-out;
-  transition: transform 220ms 120ms ease-in-out;
-  transition: transform 220ms 120ms ease-in-out, -webkit-transform 220ms 120ms ease-in-out; }
+  -webkit-transition: -webkit-transform 700ms 120ms ease-in-out;
+  transition: -webkit-transform 700ms 120ms ease-in-out;
+  -o-transition: transform 700ms 120ms ease-in-out;
+  transition: transform 700ms 120ms ease-in-out;
+  transition: transform 700ms 120ms ease-in-out, -webkit-transform 700ms 120ms ease-in-out; }
   .hamburger--active .hamburger__bars:before {
     top: 0;
     -webkit-transition: top 100ms ease-out;

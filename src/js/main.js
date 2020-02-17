@@ -15,7 +15,7 @@ if ('serviceWorker' in navigator) {
 }
 
 // place your code below
-
+const settingsImage = document.querySelector(".settings__image");
 const temp = document.querySelector('.info__item--temperature--js');
 const humidity = document.querySelector('.info__item--humidity--js');
 const clouds = document.querySelector('.info__item--clouds--js');
@@ -35,6 +35,7 @@ const tomorrow = document.querySelector(".current__days--tomorrow");
 const time = document.querySelector('.current__time');
 const url = "http://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825173623201101&q=";
 const main = document.querySelector(".main");
+let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa', 'Torun']
 let condition;
 let city;
 let urlWheather;
@@ -100,12 +101,16 @@ cities.addEventListener('click', function (e) {
 });
 
 function showCityList() {
+    // if(modal.style.display==='block'){
     hamburger.classList.toggle('hamburger--active');
     cities.classList.toggle("cities--visible");
+    // }
 }
 
 function showSettingsList() {
     settingsList.classList.toggle("settings__list--visible");
+    settingsImage.classList.toggle('settings__image--active');
+
 }
 
 function getValuesToday() {

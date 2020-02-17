@@ -36,7 +36,7 @@
 </head>
 <body>
 <main class="main">
-<!--    <section class="hamburger hamburger&#45;&#45;js">☰</section>-->
+    <!--    <section class="hamburger hamburger&#45;&#45;js">☰</section>-->
 
     <button class="hamburger hamburger--js" aria-label="Menu">
   <span class="hamburger__container" tabindex="-1">
@@ -44,10 +44,13 @@
   </span>
     </button>
 
-    <section data-toggle="modal" data-target="#myModal" class="settings settings--js"></section>
+    <section data-toggle="modal" data-target="#myModal" class="settings settings--js">
+        <img class="settings__image" src="../assets/img/settings.svg" alt="settings button">
+    </section>
     <section class="settings__list">
         <section class="settings__item">Zmień format daty</section>
         <section class="settings__item">Lokalizacja</section>
+        <section class="settings__item">Edytuj listę miast</section>
         <section class="settings__item--about">O programie</section>
     </section>
     <section class="cities">
@@ -93,7 +96,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="/assets/img/humidity.svg" height="48" width="48" class="info__item--humidity">
+                <img src="assets/img/humidity.svg" height="48" width="48" class="info__item--humidity">
                 <p>Wilgotność</p>
             </div>
             <p class="info__item--value info__item--humidity--js"></p>
@@ -101,7 +104,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="/assets/img/clouds.svg" height="48" width="48" class="info__item--clouds">
+                <img src="assets/img/clouds.svg" height="48" width="48" class="info__item--clouds">
                 <p>Zachmurzenie</p>
             </div>
             <p class="info__item--value info__item--clouds--js"></p>
@@ -109,7 +112,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="/assets/img/wind.svg" height="48" width="48" class="info__item--wind">
+                <img src="assets/img/wind.svg" height="48" width="48" class="info__item--wind">
                 <p>Wiatr</p>
             </div>
             <p class="info__item--value info__item--wind--js"></p>
@@ -117,7 +120,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="/assets/img/sunrise.svg" height="48" width="48" class="info__item--sunrise">
+                <img src="assets/img/sunrise.svg" height="48" width="48" class="info__item--sunrise">
                 <p class="info__item--text">Wschód słońca</p>
             </div>
             <p class="info__item--value info__item--sunrise--js"></p>
@@ -125,7 +128,7 @@
 
         <section class="info__item">
             <div class="info__item--container">
-                <img src="/assets/img/sunset.svg" height="48" width="48" class="info__item--sunset">
+                <img src="assets/img/sunset.svg" height="48" width="48" class="info__item--sunset">
                 <p>Zachód słońca</p>
             </div>
             <p class="info__item--value info__item--sunset--js"></p>
