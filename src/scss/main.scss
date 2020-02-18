@@ -79,6 +79,11 @@ body {
         width: 100px;
       }
     }
+    &--today:hover, &--tomorrow:hover{
+      opacity: 0.5;
+      //border: 1px solid black;
+      background: rgba($yellow, 0.8);
+    }
 
     &--hamburger {
       //@media (min-width: $phone) {
@@ -143,10 +148,11 @@ body {
   color: $black;
 }
 
-.settings__image{
-  &:after{
+.settings__image {
+  &:after {
 
   }
+
   transform: rotate(0deg);
   transition: transform 500ms linear;
 }
@@ -478,7 +484,7 @@ body {
 .cities__item:hover {
   //transition: background-color .5s;
   opacity: 0.5;
-  border: 1px solid black;
+  //border: 1px solid black;
   background: rgba($blue, 0.5);
   //font-weight: 900;
   //letter-spacing: 1px;

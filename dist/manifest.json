@@ -6,7 +6,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/wtf-gulp-starter/",
-  "start_url": "/",
+  "start_url": "https://maczi01.github.io/WheaterApp/",
   "icons": [
     {
       "src": "assets/pwa/icons/icon-72x72.png",

@@ -392,6 +392,9 @@ body {
           font-size: 15px;
           height: 30px;
           width: 100px; } }
+    .current__days--today:hover, .current__days--tomorrow:hover {
+      opacity: 0.5;
+      background: rgba(245, 240, 55, 0.8); }
     .current__days--hamburger {
       border: none;
       position: absolute;
@@ -756,7 +759,6 @@ body {
 
 .cities__item:hover {
   opacity: 0.5;
-  border: 1px solid black;
   background: rgba(86, 247, 255, 0.5); }
 
 /*# sourceMappingURL=main.css.map */
