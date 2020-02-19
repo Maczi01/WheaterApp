@@ -155,31 +155,31 @@ function getValuesToday() {
 function setBackground(condition) {
     switch (condition) {
         case 1000:
-            main.style.backgroundImage = 'url("/assets/img/sunny.jpg")';
+            main.style.backgroundImage = 'url("assets/img/sunny.jpg")';
             break;
         case 1003:
-            main.style.backgroundImage = 'url("/assets/img/cloudy.jpg")';
+            main.style.backgroundImage = 'url("assets/img/cloudy.jpg")';
             break;
         case 1006:
-            main.style.backgroundImage = 'url("/assets/img/cloudy.jpg")';
+            main.style.backgroundImage = 'url("assets/img/cloudy.jpg")';
             break;
         case 1009:
-            main.style.backgroundImage = 'url("/assets/img/overcast.jpg")';
+            main.style.backgroundImage = 'url("assets/img/overcast.jpg")';
             break;
         case 1030:
-            main.style.backgroundImage = 'url("/assets/img/mist.jpg")';
+            main.style.backgroundImage = 'url("assets/img/mist.jpg")';
             break;
         case 1063:
-            main.style.backgroundImage = 'url("/assets/img/patchyrain.jpg")';
+            main.style.backgroundImage = 'url("assets/img/patchyrain.jpg")';
             break;
         case 1066:
-            main.style.backgroundImage = 'url("/assets/img/patchysnow.jpg")';
+            main.style.backgroundImage = 'url("assets/img/patchysnow.jpg")';
             break;
         case 1189:
-            main.style.backgroundImage = 'url("/assets/img/moderaterain.jpg")';
+            main.style.backgroundImage = 'url("assets/img/moderaterain.jpg")';
             break;
         case 1258:
-            main.style.backgroundImage = 'url("/assets/img/snowshower.jpg")';
+            main.style.backgroundImage = 'url("assets/img/snowshower.jpg")';
             break;
         default:
             main.style.backgroundColor = '$blue';
