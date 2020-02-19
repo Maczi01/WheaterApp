@@ -33,7 +33,7 @@ const modal = document.getElementById("myModal");
 const today = document.querySelector(".current__days--today");
 const tomorrow = document.querySelector(".current__days--tomorrow");
 const time = document.querySelector('.current__time');
-const url = "http://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825173623201101&q=";
+const url = "https://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825173623201101&q=";
 const main = document.querySelector(".main");
 let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa', 'Torun']
 let condition;
