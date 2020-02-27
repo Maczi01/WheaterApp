@@ -79,7 +79,8 @@ body {
         width: 100px;
       }
     }
-    &--today:hover, &--tomorrow:hover{
+
+    &--today:hover, &--tomorrow:hover {
       opacity: 0.5;
       //border: 1px solid black;
       background: rgba($yellow, 0.8);
@@ -174,6 +175,78 @@ body {
   }
 }
 
+.cities__toEditList {
+  display: none;
+
+  &--visible {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    //position: relative;
+    left: 38rem;
+    @media (max-width: $phone) {
+      left: 5rem;
+      top: 12rem;
+      margin: 0 auto;
+      padding: 60px 40px 40px 40px;
+    }
+    margin: 45px 0 0 0;
+    padding: 60px 40px 40px 40px;
+    top: 1rem;
+    background-color: $white;
+    border-radius: 20px;
+    border: solid 1px $black;
+  }
+}
+
+.cities__toEditList__item {
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 8px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  text-align: center;
+  background-color: $blue;
+  color: $white;
+}
+.toEditList__item{
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 8px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  text-align: center;
+  background-color: $blue;
+  color: $white;
+  z-index: 10;
+
+  &--options {
+    display: flex;
+    font-size: 20px;
+    text-align: center;
+    height: 42px;
+    &--edit {
+      padding-top: 8px;
+
+      width: 90px;
+      border-bottom-left-radius: 52px;
+      border-top-left-radius: 52px;
+      background-color: #3727ff;
+    }
+
+    &--delete {
+      padding-top: 8px;
+
+      width: 90px;
+      border-bottom-right-radius: 52px;
+      border-top-right-radius: 52px;
+      background-color: #c5402a;
+    }
+  }
+}
+
 
 .settings__list {
   display: none;
@@ -255,7 +328,7 @@ body {
   }
 
   &__item {
-    order: 1;
+    order: -1;
     margin: 0 auto;
     font-size: 20px;
     padding-top: 8px;
@@ -272,7 +345,7 @@ body {
 
 
     &--search {
-      order: -1;
+      order: 1;
       margin: 0 auto;
       width: 180px;
       position: relative;
@@ -289,11 +362,14 @@ body {
       height: 42px;
       color: black;
       border: solid 1px black;
+      order: 1;
     }
   }
 }
 
 .searchButton {
+  order: 1;
+
   font-size: 20px;
   height: 42px;
   border: solid 1px black;
@@ -357,8 +433,8 @@ body {
 
 /* The Modal (background) */
 .modal {
-  transform: translateY(-200px);
-  transition: -webkit-transform 0.25s ease-in;
+  //transform: translateY(-200px);
+  //transition: -webkit-transform 0.25s ease-in;
 
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

@@ -47,18 +47,24 @@
     <section data-toggle="modal" data-target="#myModal" class="settings settings--js">
         <img class="settings__image" src="assets/img/settings.svg" alt="settings button">
     </section>
+
     <section class="settings__list">
         <section class="settings__item">Zmień format daty</section>
         <section class="settings__item">Lokalizacja</section>
-        <section class="settings__item">Edytuj listę miast</section>
+        <section class="settings__item settings__item--edit">Edytuj listę miast</section>
         <section class="settings__item--about">O programie</section>
     </section>
+
+    <section class="cities__toEditList">
+<!--        <div class="cities__toEditList__item&#45;&#45;options">-->
+<!--            <div class="cities__toEditList__item&#45;&#45;options&#45;&#45;edit">Edytuj</div>-->
+<!--            <div class="cities__toEditList__item&#45;&#45;options&#45;&#45;delete">Usun</div>-->
+<!--        </div>-->
+    </section>
+
     <section class="cities">
-        <section class="cities__item">Wroclaw</section>
-        <section class="cities__item" id="a">Katowice</section>
-        <section class="cities__item">Krakow</section>
-        <section class="cities__item">Warszawa</section>
-        <section class="cities__item">Torun</section>
+
+        <!--        <section class="cities__item">Torun i reszta miast</section>-->
         <section class="cities__item--search">
             <input type="search" class="cities__item--input" id="customcity" name="customcity" placeholder=" Find city">
             <button type="submit" class="searchButton">
