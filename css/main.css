@@ -447,15 +447,87 @@ body {
   transition: transform 200ms linear;
   transition: transform 200ms linear, -webkit-transform 200ms linear; }
   .settings__image--active:after {
-    bottom: 0;
-    -webkit-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-            transform: rotate(-90deg);
-    -webkit-transition: bottom 100ms ease-out, -webkit-transform 220ms 120ms ease-in-out;
-    transition: bottom 100ms ease-out, -webkit-transform 220ms 120ms ease-in-out;
-    -o-transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
-    transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
-    transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out, -webkit-transform 220ms 120ms ease-in-out; }
+    -webkit-transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+    -webkit-transition: -webkit-transform 200ms linear;
+    transition: -webkit-transform 200ms linear;
+    -o-transition: transform 200ms linear;
+    transition: transform 200ms linear;
+    transition: transform 200ms linear, -webkit-transform 200ms linear; }
+
+.cities__toEditList {
+  display: none; }
+  .cities__toEditList--visible {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    left: 38rem;
+    margin: 45px 0 0 0;
+    padding: 60px 40px 40px 40px;
+    top: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border: solid 1px #464646; }
+    @media (max-width: 640px) {
+      .cities__toEditList--visible {
+        left: 5rem;
+        top: 12rem;
+        margin: 0 auto;
+        padding: 60px 40px 40px 40px; } }
+
+.cities__toEditList__item {
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 8px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  text-align: center;
+  background-color: #56f7ff;
+  color: #FFFFFF; }
+
+.toEditList__item {
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 8px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  text-align: center;
+  background-color: #56f7ff;
+  color: #FFFFFF; }
+  .toEditList__item--options {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 20px;
+    text-align: center;
+    height: 42px; }
+    .toEditList__item--options--edit {
+      padding-top: 8px;
+      width: 90px;
+      border-bottom-left-radius: 52px;
+      border-top-left-radius: 52px;
+      background-color: #3727ff; }
+    .toEditList__item--options--delete {
+      padding-top: 8px;
+      width: 90px;
+      border-bottom-right-radius: 52px;
+      border-top-right-radius: 52px;
+      background-color: #c5402a; }
+
+.editCityinput {
+  padding-top: 0;
+  position: absolute;
+  opacity: 0;
+  margin: 0 auto;
+  font-size: 20px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  color: orange;
+  border: solid 1px black; }
 
 .settings__list {
   display: none; }
@@ -530,9 +602,9 @@ body {
       border-radius: 20px;
       border: solid 1px #464646; } }
   .cities__item {
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
     margin: 0 auto;
     font-size: 20px;
     padding-top: 8px;
@@ -542,9 +614,9 @@ body {
     background-color: #69FF34;
     color: #FFFFFF; }
     .cities__item--search {
-      -webkit-box-ordinal-group: 0;
-          -ms-flex-order: -1;
-              order: -1;
+      -webkit-box-ordinal-group: 2;
+          -ms-flex-order: 1;
+              order: 1;
       margin: 0 auto;
       width: 180px;
       position: relative;
@@ -558,9 +630,15 @@ body {
       width: 180px;
       height: 42px;
       color: black;
-      border: solid 1px black; }
+      border: solid 1px black;
+      -webkit-box-ordinal-group: 2;
+          -ms-flex-order: 1;
+              order: 1; }
 
 .searchButton {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
   font-size: 20px;
   height: 42px;
   border: solid 1px black;
@@ -621,10 +699,6 @@ body {
 
 /* The Modal (background) */
 .modal {
-  -webkit-transform: translateY(-200px);
-      -ms-transform: translateY(-200px);
-          transform: translateY(-200px);
-  transition: -webkit-transform 0.25s ease-in;
   display: none;
   /* Hidden by default */
   position: fixed;
