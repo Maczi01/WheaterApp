@@ -447,15 +447,14 @@ body {
   transition: transform 200ms linear;
   transition: transform 200ms linear, -webkit-transform 200ms linear; }
   .settings__image--active:after {
-    bottom: 0;
-    -webkit-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-            transform: rotate(-90deg);
-    -webkit-transition: bottom 100ms ease-out, -webkit-transform 220ms 120ms ease-in-out;
-    transition: bottom 100ms ease-out, -webkit-transform 220ms 120ms ease-in-out;
-    -o-transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
-    transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
-    transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out, -webkit-transform 220ms 120ms ease-in-out; }
+    -webkit-transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+    -webkit-transition: -webkit-transform 200ms linear;
+    transition: -webkit-transform 200ms linear;
+    -o-transition: transform 200ms linear;
+    transition: transform 200ms linear;
+    transition: transform 200ms linear, -webkit-transform 200ms linear; }
 
 .cities__toEditList {
   display: none; }
@@ -497,8 +496,7 @@ body {
   height: 42px;
   text-align: center;
   background-color: #56f7ff;
-  color: #FFFFFF;
-  z-index: 10; }
+  color: #FFFFFF; }
   .toEditList__item--options {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -518,6 +516,18 @@ body {
       border-bottom-right-radius: 52px;
       border-top-right-radius: 52px;
       background-color: #c5402a; }
+
+.editCityinput {
+  padding-top: 0;
+  position: absolute;
+  opacity: 0;
+  margin: 0 auto;
+  font-size: 20px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  color: orange;
+  border: solid 1px black; }
 
 .settings__list {
   display: none; }

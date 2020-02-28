@@ -101,24 +101,29 @@ editCitiesList.addEventListener('click', () => {
 function showOptions() {
     // this.style.visibility = "hidden";
     // this.repl
-    let options = document.createElement('div')
+    let options = document.createElement('section')
     let editButton = document.createElement('div')
+    let inputEditButton = document.createElement('div')
     let deleteButton = document.createElement('div')
     cities__toEditList.appendChild(options)
     options.appendChild(editButton)
     options.appendChild(deleteButton)
+    options.appendChild(inputEditButton)
     options.classList.add('toEditList__item--options')
     editButton.classList.add('toEditList__item--options--edit')
+    inputEditButton.innerHTML = "<input type='text' name='name' id='edited' class='editCityinput'/>";
     deleteButton.classList.add('toEditList__item--options--delete')
     editButton.innerText = 'Edytuj';
     deleteButton.innerText = 'Usun';
     console.log(citiesList);
-    let currentCity = this.innerHTML;
     console.log(citiesList.indexOf(this.innerHTML));
+
+    let currentCity = this.innerHTML;
     this.replaceWith(options);
     deleteButton.addEventListener('click', function () {
-        citiesList.splice(citiesList.indexOf(this.innerHTML), 1);
+        citiesList.splice(citiesList.indexOf(currentCity), 1);
         cities__toEditList.innerHTML = "";
+        // generateCitiesList();
         citiesList.forEach(e => {
             let element = document.createElement('section')
             cities__toEditList.appendChild(element)
@@ -126,54 +131,91 @@ function showOptions() {
             element.style.order = citiesList.indexOf(e)
             element.innerText = e;
             element.addEventListener('click', showOptions);
+            // document.querySelectorAll('.cities__item').forEach(e => e.parentNode.removeChild(e));
+            console.log(citiesList)
         })
-        // generateCitiesList()
     });
-    editButton.addEventListener('click',function(){
-        // this.classList.add('cities__item--input')
-        // this.innerHTML = '<input type="search" placeholder="'+currentCity+'">';
-    });
+    editButton.addEventListener("click", (e) => {
+        // let currentCity = editButton.textContent;
+        // console.log(currentCity)
+        let indexToRemove = citiesList.indexOf(currentCity);
+        deleteButton.style.display = 'none';
+        editButton.style.display = 'none';
+        let inputField = document.getElementById('edited');
+        inputField.style.opacity = 1;
+        // document.getElementById('edited').classList += ` placeholder = ${currentCity}`;
 
+        console.log(citiesList)
+        let a = document.getElementById('edited');
+        a.addEventListener('blur', ()=>{
+            let newCity = a.value;
+            citiesList.splice(indexToRemove,1 , newCity);
+            inputField.style.opacity = 0;
+
+            let element = document.createElement('section')
+            cities__toEditList.appendChild(element)
+            element.classList.add('cities__toEditList__item')
+            // element.style.order = citiesList.indexOf(e)
+            element.innerText = newCity;
+            element.addEventListener('click', showOptions);
+            inputField.replaceWith(element)
+        })
+
+
+        console.log(citiesList)
+        // console.log(a)
+
+
+        // editButton.replaceWith(edited)
+
+        // editButton.innerHTML = "<input type='text' name='name' id='edited' class='editCityinput'/>";
+        // editButton.innerHTML = "<input type='search' class='cities__item--input' id='customcity' name='customcity' placeholder='Edit'>";
+        // let inputText = this.innerHTML()
+        // tempInput.replaceWith(inputText)
+
+        // let save = function () {
+        //     let p = ('<p data-editable />').text(inputText.value);
+        //     inputText.replaceWith(p);
+        // }
+        // inputText.addEventListener('blur', save);
+
+        // deleteButton.style.display = 'none';
+        // // this.classList.add('toEditList__item--options--edit--input')
+        // // editButton.classList.add('toEditList__item--options--edit--input')
+        // editButton.innerHTML = `<input type="text" class='editCityinput' placeholder= ${currentCity}>`;
+    });
 }
 
-// function editCity() {
-//     this.innerHTML = '<input value="'+this+'">';
-// }
-
-about.onclick = function () {
+about.addEventListener('click', () => {
     modal.style.display = "block";
-};
+});
 
-window.addEventListener('click', (e)=>{
+window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = "none";
     }
+    generateCitiesList();
 })
 
-today.addEventListener('click', function () {
-    getValuesToday();
-});
+today.addEventListener('click', getValuesToday);
 
-tomorrow.addEventListener('click', function () {
-    getValuesTomorrow();
-});
+tomorrow.addEventListener('click', getValuesTomorrow);
 
 hamburger.addEventListener('click', showCityList);
 
 settings.addEventListener('click', showSettingsList);
 
-searchButton.addEventListener('click', function () {
-    city = document.getElementById("customcity").value;
-    getValuesToday();
-    // showCityList();
-});
+searchButton.addEventListener('click', () => {
+        city = document.getElementById("customcity").value;
+        getValuesToday();
+    }
+);
 
 cities.addEventListener('click', function (e) {
     if (e.target.className === ("cities__item")) {
         city = e.target.textContent;
         console.log(city);
         getValuesToday();
-        // showCityList();
     }
     cities.classList.toggle("cities--visible");
     hamburger.classList.toggle('hamburger--active');
@@ -183,11 +225,13 @@ function showCityList() {
     // if(modal.style.display==='block'){
     hamburger.classList.toggle('hamburger--active');
     cities.classList.toggle("cities--visible");
-    // generateCitiesList();
+    // elementNodeListOf.
+    generateCitiesList();
     // }
 }
 
 function generateCitiesList() {
+    document.querySelectorAll('.cities__item').forEach(e => e.parentNode.removeChild(e));
     citiesList.forEach(e => {
         let element = document.createElement('section')
         cities.appendChild(element)
@@ -201,6 +245,14 @@ function showSettingsList() {
     settingsImage.classList.toggle('settings__image--active');
     cities__toEditList.classList.remove('cities__toEditList--visible');
 }
+
+
+// function showCurrentTime() {
+//     // let local = localTime;
+//     time.innerHTML = `${localTime.getHours()} : ${localTime.getMinutes()} : ${localTime.getSeconds()}`;
+//     window.requestAnimationFrame(showCurrentTime);
+// }
+// window.requestAnimationFrame(showCurrentTime);
 
 function getValuesToday() {
     currentlocation.innerHTML = city;
@@ -228,14 +280,6 @@ function getValuesToday() {
         });
 
 }
-
-// function showCurrentTime() {
-//     // let local = localTime;
-//     time.innerHTML = `${localTime.getHours()} : ${localTime.getMinutes()} : ${localTime.getSeconds()}`;
-//     window.requestAnimationFrame(showCurrentTime);
-// }
-// window.requestAnimationFrame(showCurrentTime);
-
 
 function setBackground(condition) {
     switch (condition) {

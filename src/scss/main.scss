@@ -167,11 +167,15 @@ body {
   //  transition: top 100ms ease-out;
   //}
 
+  //&:after {
+  //  bottom: 0;
+  //  transform: rotate(-90deg);
+  //  transition: bottom 100ms ease-out,
+  //  transform 220ms 120ms ease-in-out;
+  //}
   &:after {
-    bottom: 0;
-    transform: rotate(-90deg);
-    transition: bottom 100ms ease-out,
-    transform 220ms 120ms ease-in-out;
+    transform: rotate(-180deg);
+    transition: transform 200ms linear;
   }
 }
 
@@ -210,7 +214,8 @@ body {
   background-color: $blue;
   color: $white;
 }
-.toEditList__item{
+
+.toEditList__item {
   margin: 0 auto;
   font-size: 20px;
   padding-top: 8px;
@@ -220,13 +225,14 @@ body {
   text-align: center;
   background-color: $blue;
   color: $white;
-  z-index: 10;
+  //z-index: 10;
 
   &--options {
     display: flex;
     font-size: 20px;
     text-align: center;
     height: 42px;
+
     &--edit {
       padding-top: 8px;
 
@@ -245,6 +251,19 @@ body {
       background-color: #c5402a;
     }
   }
+}
+
+.editCityinput {
+  padding-top: 0;
+  position: absolute;
+  opacity: 0;
+  margin: 0 auto;
+  font-size: 20px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  color: orange;
+  border: solid 1px black;
 }
 
 
