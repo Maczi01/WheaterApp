@@ -1,3 +1,4 @@
+permalink: /index.html
 # WheaterApp
 
 ### simple app to show wheather using wheather api 
