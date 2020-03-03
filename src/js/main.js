@@ -42,7 +42,7 @@ const url = "https://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825
 const main = document.querySelector(".main");
 let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa']
 let condition;
-let city = "Ottawa";
+let city;
 let urlWheather;
 let localTime;
 let tz;
