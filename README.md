@@ -1,4 +1,5 @@
 permalink: /index.html
+
 # WheaterApp
 
 ### simple app to show wheather using wheather api 
@@ -11,5 +12,8 @@ permalink: /index.html
 * the website will be available as desktop, mobile version and PWA
 * project created with using Webstorm. To work with Rest Api I used Postman.
 * [Demo](https://maczi01.github.io/WheaterApp/)
+
+
+* I learned what mixed content is
 
 ![screenshot](https://github.com/Maczi01/WheaterApp/blob/master/src/assets/img/index.png?raw=true)

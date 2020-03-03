@@ -356,13 +356,17 @@ body {
 .current {
   margin-top: 20px;
   text-align: center;
-  font-size: 6.25rem;
+  font-size: 5rem;
   text-shadow: black 0.1em 0.1em 0.2em;
   -ms-grid-column: 2;
       grid-column-start: 2;
   -ms-grid-row: 3;
       grid-row-start: 3; }
   .current__location {
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 16px; }
+  .current__date {
     text-align: center;
     font-size: 30px;
     padding-bottom: 16px; }
@@ -476,6 +480,17 @@ body {
         margin: 0 auto;
         padding: 60px 40px 40px 40px; } }
 
+.cities__toEditList__item--add {
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 8px;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  text-align: center;
+  background-color: #f5f037;
+  color: #464646; }
+
 .cities__toEditList__item {
   margin: 0 auto;
   font-size: 20px;
@@ -518,6 +533,7 @@ body {
       background-color: #c5402a; }
 
 .editCityinput {
+  z-index: 3;
   padding-top: 0;
   position: absolute;
   opacity: 0;
@@ -526,7 +542,20 @@ body {
   border-radius: 52px;
   width: 180px;
   height: 42px;
-  color: orange;
+  color: black;
+  border: solid 1px black; }
+
+.addCityinput {
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 8px;
+  z-index: 3;
+  position: absolute;
+  opacity: 1;
+  border-radius: 52px;
+  width: 180px;
+  height: 42px;
+  color: black;
   border: solid 1px black; }
 
 .settings__list {

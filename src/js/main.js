@@ -14,7 +14,8 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// place your code below
+var moment = require('moment-timezone');
+
 const settingsImage = document.querySelector(".settings__image");
 const temp = document.querySelector('.info__item--temperature--js');
 const humidity = document.querySelector('.info__item--humidity--js');
@@ -31,22 +32,24 @@ const hamburger = document.querySelector('.hamburger--js');
 const settings = document.querySelector('.settings--js');
 const about = document.querySelector(".settings__item--about");
 const editCitiesList = document.querySelector(".settings__item--edit");
+const listCitiesToEdit = document.querySelector(".cities__toEditList");
 const modal = document.getElementById("myModal");
 const today = document.querySelector(".current__days--today");
 const tomorrow = document.querySelector(".current__days--tomorrow");
 const time = document.querySelector('.current__time');
+const date = document.querySelector('.current__date');
 const url = "https://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825173623201101&q=";
 const main = document.querySelector(".main");
-// let localTime;
-
-let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa', 'Torun']
+let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa']
 let condition;
-let city;
+let city = "Ottawa";
 let urlWheather;
+let localTime;
+let tz;
 
 window.onload = function () {
     generateCitiesList();
-    time.innerHTML = new Date().getHours() + ":" + new Date().getMinutes();
+    console.log(citiesList)
     let loc = navigator.geolocation;
     if (loc) {
         loc.getCurrentPosition(function (location) {
@@ -57,8 +60,6 @@ window.onload = function () {
                 .then(resp => {
                     city = resp.location.name;
                     getValuesToday();
-                    // localTime = new Date(info.location.localtime).getHours() + ":" + new Date(info.location.localtime).getMinutes();
-
                 })
                 .catch(err => {
                     console.error("Błąd ładowania danych")
@@ -67,123 +68,115 @@ window.onload = function () {
     } else {
         console.log("Nie udostępniono lokalizacji");
     }
-    // getValuesToday();
-// time.innerHTML = localTime.getMinutes();
 };
+
+function generateCitiesListToEdit() {
+    document.querySelectorAll('.cities__toEditList__item').forEach(e => e.parentNode.removeChild(e));
+
+    citiesList.forEach(e => {
+        let element = document.createElement('section')
+        cities__toEditList.appendChild(element)
+        element.classList.add('cities__toEditList__item')
+        element.innerText = e;
+        element.addEventListener('click', showOptions);
+
+    });
+}
+
+function showAddCityButton() {
+    if (citiesList.length < 5) {
+        let element = document.createElement('section')
+        cities__toEditList.appendChild(element)
+        element.classList.add('cities__toEditList__item--add')
+        element.innerText = 'Dodaj miasto';
+        element.addEventListener('click', () => {
+            let input = document.createElement('section')
+            input.classList.add('toEditList__item--options')
+            input.innerHTML = '<input type="text" placeholder="Dodaj miasto" name="name" id="add" class="addCityinput"/>';
+            cities__toEditList.appendChild(input);
+            element.replaceWith(input)
+            let a = document.getElementById('add')
+            input.addEventListener('blur', () => {
+                let newCity = a.value;
+                citiesList.push(newCity)
+                console.log(citiesList)
+                generateCitiesListToEdit();
+                showAddCityButton()
+                input.remove();
+            }, true);
+        });
+    }
+    if (citiesList.length === 5) {
+        document.querySelector('.toEditList__item--options').remove()
+    }
+}
 
 editCitiesList.addEventListener('click', () => {
     cities__toEditList.innerHTML = "";
     cities__toEditList.classList.toggle("cities__toEditList--visible");
     settingsList.classList = "settings__list";
-    citiesList.forEach(e => {
-        let element = document.createElement('section')
-        cities__toEditList.appendChild(element)
-        element.classList.add('cities__toEditList__item')
-        // element.style.order = citiesList.indexOf(e)
-        element.innerText = e;
-        element.addEventListener('click', showOptions);
-    })
-
-    // citiesList.addEventListener('click', showOptions);
+    generateCitiesListToEdit();
+    showAddCityButton();
 });
+listCitiesToEdit.addEventListener('changes', showAddCityButton);
 
-// function generateCitiesList() {
-//     citiesList.forEach(e => {
-//         let element = document.createElement('section')
-//         cities__toEditList.appendChild(element)
-//         element.classList.add('cities__toEditList__item')
-//         element.style.order = citiesList.indexOf(e)
-//         element.innerText = e;
-//         element.addEventListener('click', showOptions);
-//     })
-// }
-
-function showOptions() {
-    // this.style.visibility = "hidden";
-    // this.repl
-    let options = document.createElement('section')
-    let editButton = document.createElement('div')
-    let inputEditButton = document.createElement('div')
-    let deleteButton = document.createElement('div')
-    cities__toEditList.appendChild(options)
-    options.appendChild(editButton)
-    options.appendChild(deleteButton)
-    options.appendChild(inputEditButton)
-    options.classList.add('toEditList__item--options')
-    editButton.classList.add('toEditList__item--options--edit')
-    inputEditButton.innerHTML = "<input type='text' name='name' id='edited' class='editCityinput'/>";
-    deleteButton.classList.add('toEditList__item--options--delete')
-    editButton.innerText = 'Edytuj';
-    deleteButton.innerText = 'Usun';
-    console.log(citiesList);
-    console.log(citiesList.indexOf(this.innerHTML));
-
-    let currentCity = this.innerHTML;
-    this.replaceWith(options);
-    deleteButton.addEventListener('click', function () {
-        citiesList.splice(citiesList.indexOf(currentCity), 1);
-        cities__toEditList.innerHTML = "";
-        // generateCitiesList();
-        citiesList.forEach(e => {
-            let element = document.createElement('section')
-            cities__toEditList.appendChild(element)
-            element.classList.add('cities__toEditList__item')
-            element.style.order = citiesList.indexOf(e)
-            element.innerText = e;
-            element.addEventListener('click', showOptions);
-            // document.querySelectorAll('.cities__item').forEach(e => e.parentNode.removeChild(e));
-            console.log(citiesList)
-        })
-    });
-    editButton.addEventListener("click", (e) => {
-        // let currentCity = editButton.textContent;
-        // console.log(currentCity)
-        let indexToRemove = citiesList.indexOf(currentCity);
-        deleteButton.style.display = 'none';
-        editButton.style.display = 'none';
-        let inputField = document.getElementById('edited');
-        inputField.style.opacity = 1;
-        // document.getElementById('edited').classList += ` placeholder = ${currentCity}`;
-
-        console.log(citiesList)
-        let a = document.getElementById('edited');
-        a.addEventListener('blur', ()=>{
-            let newCity = a.value;
-            citiesList.splice(indexToRemove,1 , newCity);
-            inputField.style.opacity = 0;
-
-            let element = document.createElement('section')
-            cities__toEditList.appendChild(element)
-            element.classList.add('cities__toEditList__item')
-            // element.style.order = citiesList.indexOf(e)
-            element.innerText = newCity;
-            element.addEventListener('click', showOptions);
-            inputField.replaceWith(element)
-        })
-
-
-        console.log(citiesList)
-        // console.log(a)
-
-
-        // editButton.replaceWith(edited)
-
-        // editButton.innerHTML = "<input type='text' name='name' id='edited' class='editCityinput'/>";
-        // editButton.innerHTML = "<input type='search' class='cities__item--input' id='customcity' name='customcity' placeholder='Edit'>";
-        // let inputText = this.innerHTML()
-        // tempInput.replaceWith(inputText)
-
-        // let save = function () {
-        //     let p = ('<p data-editable />').text(inputText.value);
-        //     inputText.replaceWith(p);
-        // }
-        // inputText.addEventListener('blur', save);
-
-        // deleteButton.style.display = 'none';
-        // // this.classList.add('toEditList__item--options--edit--input')
-        // // editButton.classList.add('toEditList__item--options--edit--input')
-        // editButton.innerHTML = `<input type="text" class='editCityinput' placeholder= ${currentCity}>`;
-    });
+function showOptions(e) {
+    if (document.querySelectorAll('.toEditList__item--options').length === 0) {
+        let currentButton = this;
+        let options = document.createElement('section')
+        let editButton = document.createElement('div')
+        let inputEditButton = document.createElement('div')
+        let deleteButton = document.createElement('div')
+        cities__toEditList.appendChild(options)
+        options.appendChild(editButton)
+        options.appendChild(deleteButton)
+        options.appendChild(inputEditButton)
+        let currentCity = this.innerHTML;
+        options.classList.add('toEditList__item--options')
+        editButton.classList.add('toEditList__item--options--edit')
+        inputEditButton.innerHTML = `<input type='text' name='name' placeholder="${currentCity}" id='edited' class='editCityinput'/>`;
+        deleteButton.classList.add('toEditList__item--options--delete')
+        editButton.innerText = 'Edytuj';
+        deleteButton.innerText = 'Usun';
+        currentButton.replaceWith(options);
+        deleteButton.addEventListener('click', () => {
+            citiesList.splice(citiesList.indexOf(currentCity), 1);
+            cities__toEditList.innerHTML = "";
+            citiesList.forEach(e => {
+                let element = document.createElement('section')
+                cities__toEditList.appendChild(element)
+                element.classList.add('cities__toEditList__item')
+                element.innerText = e;
+                element.addEventListener('click', showOptions);
+            })
+            showAddCityButton()
+        }, true);
+        editButton.addEventListener("click", () => {
+            // console.log(inputField)
+            // inputEditButton.style.opacity = 1;
+            e.stopPropagation();
+            let indexToRemove = citiesList.indexOf(currentCity);
+            deleteButton.style.display = 'none';
+            editButton.style.display = 'none';
+            // let inputField = document.getElementById('edited');
+            let a = document.getElementById('edited');
+            document.querySelector('.editCityinput').style.opacity = 1;
+            // document.querySelector('.editsearchButton').style.opacity = 1;
+            inputEditButton.addEventListener('blur', (e) => {
+                let newCity = a.value;
+                if (newCity.length === 0) {
+                    newCity = currentCity;
+                }
+                citiesList.splice(indexToRemove, 1, newCity);
+                let element = document.createElement('section')
+                cities__toEditList.appendChild(element)
+                element.classList.add('cities__toEditList__item')
+                element.innerText = newCity;
+                element.addEventListener('click', showOptions);
+                document.querySelector('.toEditList__item--options').replaceWith(element);
+            }, true);
+        });
+    }
 }
 
 about.addEventListener('click', () => {
@@ -195,7 +188,7 @@ window.addEventListener('click', (e) => {
         modal.style.display = "none";
     }
     generateCitiesList();
-})
+});
 
 today.addEventListener('click', getValuesToday);
 
@@ -206,10 +199,9 @@ hamburger.addEventListener('click', showCityList);
 settings.addEventListener('click', showSettingsList);
 
 searchButton.addEventListener('click', () => {
-        city = document.getElementById("customcity").value;
-        getValuesToday();
-    }
-);
+    city = document.getElementById("customcity").value;
+    getValuesToday();
+});
 
 cities.addEventListener('click', function (e) {
     if (e.target.className === ("cities__item")) {
@@ -222,12 +214,9 @@ cities.addEventListener('click', function (e) {
 });
 
 function showCityList() {
-    // if(modal.style.display==='block'){
     hamburger.classList.toggle('hamburger--active');
     cities.classList.toggle("cities--visible");
-    // elementNodeListOf.
     generateCitiesList();
-    // }
 }
 
 function generateCitiesList() {
@@ -247,24 +236,15 @@ function showSettingsList() {
 }
 
 
-// function showCurrentTime() {
-//     // let local = localTime;
-//     time.innerHTML = `${localTime.getHours()} : ${localTime.getMinutes()} : ${localTime.getSeconds()}`;
-//     window.requestAnimationFrame(showCurrentTime);
-// }
-// window.requestAnimationFrame(showCurrentTime);
-
 function getValuesToday() {
     currentlocation.innerHTML = city;
     urlWheather = url + city;
     fetch(urlWheather)
-        .then(resp => resp.json())
+        .then(async resp => resp.json())
         .then(resp => {
             const info = resp;
-            // var dateToshow = new Date(info.location.localtime);
-            // time.innerHTML = dateToshow.getHours() + ":" + dateToshow.getMinutes();
-            // localTime = new Date(info.location.localtime);
-            // console.log(localTime)
+            localTime = new Date(info.location.localtime);
+            tz = info.location.tz_id;
             temp.innerHTML = info.current.temp_c + "°C";
             humidity.innerHTML = info.current.humidity + "%";
             clouds.innerHTML = info.current.cloud + "%";
@@ -278,7 +258,6 @@ function getValuesToday() {
         .catch(err => {
             console.error("Błąd ładowania danych")
         });
-
 }
 
 function setBackground(condition) {
@@ -335,6 +314,17 @@ function getValuesTomorrow() {
             console.error("Błąd ładowania danych")
         });
 }
+//
+function updateTime() {
+    let timeToDisplay = moment.tz(tz).format('hh:mm');
+    let dateToDisplay = moment.tz(tz).format('dddd[,] d MMM YYYY ');
+    time.innerHTML = timeToDisplay;
+    date.innerHTML = dateToDisplay;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+
 
 
 
