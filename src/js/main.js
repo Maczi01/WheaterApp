@@ -41,7 +41,6 @@ const main = document.querySelector(".main");
 const searchInput = document.querySelector(".cities__item--input");
 const matchList = document.querySelector('.matchList');
 
-
 let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa'];
 let condition;
 let city;
@@ -49,33 +48,33 @@ let urlWheather;
 let localTime;
 let tz;
 
-// const search = async searchCity =>{
 async function searchCity(city) {
-    const result = await fetch(`http://api.weatherapi.com/v1/search.json?key=3f1ad206d1b94436825173623201101&q=${city}`)
-    const cities = await result.json();
+    if(city.length >0){
+        const result = await fetch(`http://api.weatherapi.com/v1/search.json?key=3f1ad206d1b94436825173623201101&q=${city}`)
+        const cities = await result.json();
 
-    let matches = cities.filter(place => {
-        const regex = new RegExp(`^${city}`, 'gi');
-        return place.name.match(regex)
-    });
+        let matches = cities.filter(place => {
+            const regex = new RegExp(`^${city}`, 'gi');
+            return place.name.match(regex)
+        });
 
-    if (city.length === 0) {
-        matches = []
-        matchList.innerHTML = '';
+        if (city.length === 0) {
+            matches = []
+            matchList.innerHTML = '';
+        }
+        console.log(matches[0])
+        outputHTML(matches);
     }
-    console.log(matches[0])
-    outputHTML(matches);
 }
 
 function outputHTML(matches) {
-
+    if (matches.length === 0) {
+        document.querySelectorAll('.result').forEach(e => e.remove())
+    }
 
     if (matches.length > 0) {
         const html = matches.map(match =>
-                `<div class="result">${match.name} </div>`
-            // match.addEventListener('click', () => {
-            //         console.log(e.name)
-            //     }
+            `<div class="result">${match.name} </div>`
         )
             .join('');
         matchList.innerHTML = html;
@@ -277,7 +276,6 @@ function showSettingsList() {
     cities__toEditList.classList.remove('cities__toEditList--visible');
 }
 
-
 function getValuesToday() {
     currentlocation.innerHTML = city;
     urlWheather = url + city;
@@ -360,6 +358,7 @@ function getValuesTomorrow() {
 function updateTime() {
     let timeToDisplay = moment.tz(tz);
     time.innerHTML = timeToDisplay.format('hh:mm');
+
     date.innerHTML = timeToDisplay.format('dddd[,] d MMM YYYY ');
 }
 
