@@ -36,8 +36,6 @@
 </head>
 <body>
 <main class="main">
-    <!--    <section class="hamburger hamburger&#45;&#45;js">☰</section>-->
-
     <button class="hamburger hamburger--js" aria-label="Menu">
   <span class="hamburger__container" tabindex="-1">
     <span class="hamburger__bars"></span>
@@ -49,29 +47,34 @@
     </section>
 
     <section class="settings__list">
-        <section class="settings__item">Zmień format daty</section>
         <section class="settings__item">Lokalizacja</section>
         <section class="settings__item settings__item--edit">Edytuj listę miast</section>
         <section class="settings__item--about">O programie</section>
     </section>
 
     <section class="cities__toEditList">
-<!--            <section class="cities__toEditList__item&#45;&#45;add">Dodaj miasto-->
-<!--            <div class="editCityinput">-->
-<!--                <input type="text" name="name" id="edited" class="addCityinput"/>-->
-<!--            </div>-->
-<!--            </section>-->
+
     </section>
 
     <section class="cities">
-
-        <!--        <section class="cities__item">Torun i reszta miast</section>-->
         <section class="cities__item--search">
-            <input type="search" class="cities__item--input" id="customcity" name="customcity" placeholder=" Find city">
-            <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-            </button>
+            <div>
+                <div class="temp">
+                    <input type="search" class="cities__item--input" id="customcity" name="customcity"
+                           placeholder=" Find city">
+
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="matchList">
+
+                </div>
+            </div>
+
         </section>
+
     </section>
 
 

@@ -353,6 +353,32 @@ body {
       grid-template-columns: 20px 1fr 20px;
       margin: 20px; } }
 
+.temp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.result {
+  list-style-type: none;
+  margin: 0;
+  border-radius: 52px;
+  border: 1px solid #ddd;
+  /* Add a border to all links */
+  margin-top: -1px;
+  /* Prevent double borders */
+  background-color: #69FF34;
+  /* Grey background color */
+  padding: 12px;
+  /* Add some padding */
+  text-decoration: none;
+  /* Remove default text underline */
+  font-size: 18px;
+  /* Increase the font-size */
+  color: white;
+  /* Add a black text color */
+  display: block;
+  /* Make it into a block element to fill the whole list */ }
+
 .current {
   margin-top: 20px;
   text-align: center;
