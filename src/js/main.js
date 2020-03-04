@@ -1,6 +1,4 @@
 "use strict";
-// service worker registration - remove if you're not going to use it
-// import {DOMelements} from "/base.js";
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
@@ -40,16 +38,65 @@ const time = document.querySelector('.current__time');
 const date = document.querySelector('.current__date');
 const url = "https://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825173623201101&q=";
 const main = document.querySelector(".main");
-let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa']
+const searchInput = document.querySelector(".cities__item--input");
+const matchList = document.querySelector('.matchList');
+
+
+let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa'];
 let condition;
 let city;
 let urlWheather;
 let localTime;
 let tz;
 
+// const search = async searchCity =>{
+async function searchCity(city) {
+    const result = await fetch(`http://api.weatherapi.com/v1/search.json?key=3f1ad206d1b94436825173623201101&q=${city}`)
+    const cities = await result.json();
+
+    let matches = cities.filter(place => {
+        const regex = new RegExp(`^${city}`, 'gi');
+        return place.name.match(regex)
+    });
+
+    if (city.length === 0) {
+        matches = []
+        matchList.innerHTML = '';
+    }
+    console.log(matches[0])
+    outputHTML(matches);
+}
+
+function outputHTML(matches) {
+
+
+    if (matches.length > 0) {
+        const html = matches.map(match =>
+                `<div class="result">${match.name} </div>`
+            // match.addEventListener('click', () => {
+            //         console.log(e.name)
+            //     }
+        )
+            .join('');
+        matchList.innerHTML = html;
+    }
+
+    let elementNodeListOf = document.querySelectorAll('.result');
+    console.log(elementNodeListOf)
+    elementNodeListOf.forEach(e => {
+        e.addEventListener('click', (e) => {
+            let cityData = e.target.innerHTML;
+            let city = cityData.split(',')[0];
+            searchInput.value = city;
+        });
+    })
+}
+
+searchInput.addEventListener('input', () => searchCity(searchInput.value))
+
 window.onload = function () {
     generateCitiesList();
-    console.log(citiesList)
+    console.log(citiesList);
     let loc = navigator.geolocation;
     if (loc) {
         loc.getCurrentPosition(function (location) {
@@ -74,9 +121,9 @@ function generateCitiesListToEdit() {
     document.querySelectorAll('.cities__toEditList__item').forEach(e => e.parentNode.removeChild(e));
 
     citiesList.forEach(e => {
-        let element = document.createElement('section')
-        cities__toEditList.appendChild(element)
-        element.classList.add('cities__toEditList__item')
+        let element = document.createElement('section');
+        cities__toEditList.appendChild(element);
+        element.classList.add('cities__toEditList__item');
         element.innerText = e;
         element.addEventListener('click', showOptions);
 
@@ -85,23 +132,23 @@ function generateCitiesListToEdit() {
 
 function showAddCityButton() {
     if (citiesList.length < 5) {
-        let element = document.createElement('section')
-        cities__toEditList.appendChild(element)
-        element.classList.add('cities__toEditList__item--add')
+        let element = document.createElement('section');
+        cities__toEditList.appendChild(element);
+        element.classList.add('cities__toEditList__item--add');
         element.innerText = 'Dodaj miasto';
         element.addEventListener('click', () => {
-            let input = document.createElement('section')
-            input.classList.add('toEditList__item--options')
+            let input = document.createElement('section');
+            input.classList.add('toEditList__item--options');
             input.innerHTML = '<input type="text" placeholder="Dodaj miasto" name="name" id="add" class="addCityinput"/>';
             cities__toEditList.appendChild(input);
-            element.replaceWith(input)
-            let a = document.getElementById('add')
+            element.replaceWith(input);
+            let a = document.getElementById('add');
             input.addEventListener('blur', () => {
                 let newCity = a.value;
-                citiesList.push(newCity)
-                console.log(citiesList)
+                citiesList.push(newCity);
+                console.log(citiesList);
                 generateCitiesListToEdit();
-                showAddCityButton()
+                showAddCityButton();
                 input.remove();
             }, true);
         });
@@ -123,19 +170,19 @@ listCitiesToEdit.addEventListener('changes', showAddCityButton);
 function showOptions(e) {
     if (document.querySelectorAll('.toEditList__item--options').length === 0) {
         let currentButton = this;
-        let options = document.createElement('section')
-        let editButton = document.createElement('div')
-        let inputEditButton = document.createElement('div')
-        let deleteButton = document.createElement('div')
-        cities__toEditList.appendChild(options)
-        options.appendChild(editButton)
-        options.appendChild(deleteButton)
-        options.appendChild(inputEditButton)
+        let options = document.createElement('section');
+        let editButton = document.createElement('div');
+        let inputEditButton = document.createElement('div');
+        let deleteButton = document.createElement('div');
+        cities__toEditList.appendChild(options);
+        options.appendChild(editButton);
+        options.appendChild(deleteButton);
+        options.appendChild(inputEditButton);
         let currentCity = this.innerHTML;
-        options.classList.add('toEditList__item--options')
-        editButton.classList.add('toEditList__item--options--edit')
+        options.classList.add('toEditList__item--options');
+        editButton.classList.add('toEditList__item--options--edit');
         inputEditButton.innerHTML = `<input type='text' name='name' placeholder="${currentCity}" id='edited' class='editCityinput'/>`;
-        deleteButton.classList.add('toEditList__item--options--delete')
+        deleteButton.classList.add('toEditList__item--options--delete');
         editButton.innerText = 'Edytuj';
         deleteButton.innerText = 'Usun';
         currentButton.replaceWith(options);
@@ -143,34 +190,30 @@ function showOptions(e) {
             citiesList.splice(citiesList.indexOf(currentCity), 1);
             cities__toEditList.innerHTML = "";
             citiesList.forEach(e => {
-                let element = document.createElement('section')
-                cities__toEditList.appendChild(element)
-                element.classList.add('cities__toEditList__item')
+                let element = document.createElement('section');
+                cities__toEditList.appendChild(element);
+                element.classList.add('cities__toEditList__item');
                 element.innerText = e;
                 element.addEventListener('click', showOptions);
-            })
+            });
             showAddCityButton()
         }, true);
         editButton.addEventListener("click", () => {
-            // console.log(inputField)
-            // inputEditButton.style.opacity = 1;
             e.stopPropagation();
             let indexToRemove = citiesList.indexOf(currentCity);
             deleteButton.style.display = 'none';
             editButton.style.display = 'none';
-            // let inputField = document.getElementById('edited');
             let a = document.getElementById('edited');
             document.querySelector('.editCityinput').style.opacity = 1;
-            // document.querySelector('.editsearchButton').style.opacity = 1;
             inputEditButton.addEventListener('blur', (e) => {
                 let newCity = a.value;
                 if (newCity.length === 0) {
                     newCity = currentCity;
                 }
                 citiesList.splice(indexToRemove, 1, newCity);
-                let element = document.createElement('section')
-                cities__toEditList.appendChild(element)
-                element.classList.add('cities__toEditList__item')
+                let element = document.createElement('section');
+                cities__toEditList.appendChild(element);
+                element.classList.add('cities__toEditList__item');
                 element.innerText = newCity;
                 element.addEventListener('click', showOptions);
                 document.querySelector('.toEditList__item--options').replaceWith(element);
@@ -206,7 +249,6 @@ searchButton.addEventListener('click', () => {
 cities.addEventListener('click', function (e) {
     if (e.target.className === ("cities__item")) {
         city = e.target.textContent;
-        console.log(city);
         getValuesToday();
     }
     cities.classList.toggle("cities--visible");
@@ -314,13 +356,13 @@ function getValuesTomorrow() {
             console.error("Błąd ładowania danych")
         });
 }
-//
+
 function updateTime() {
-    let timeToDisplay = moment.tz(tz).format('hh:mm');
-    let dateToDisplay = moment.tz(tz).format('dddd[,] d MMM YYYY ');
-    time.innerHTML = timeToDisplay;
-    date.innerHTML = dateToDisplay;
+    let timeToDisplay = moment.tz(tz);
+    time.innerHTML = timeToDisplay.format('hh:mm');
+    date.innerHTML = timeToDisplay.format('dddd[,] d MMM YYYY ');
 }
+
 setInterval(updateTime, 1000);
 updateTime();
 
