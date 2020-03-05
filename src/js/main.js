@@ -38,7 +38,8 @@ const time = document.querySelector('.current__time');
 const date = document.querySelector('.current__date');
 const url = "https://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825173623201101&q=";
 const main = document.querySelector(".main");
-const searchInput = document.querySelector(".cities__item--input");
+const searchInputButton = document.querySelector(".cities__item--input");
+const searchInput = document.querySelector(".searchModal--input");
 const matchList = document.querySelector('.matchList');
 
 let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa'];
@@ -62,7 +63,6 @@ async function searchCity(city) {
             matches = []
             matchList.innerHTML = '';
         }
-        console.log(matches[0])
         outputHTML(matches);
     }
 }
@@ -74,7 +74,7 @@ function outputHTML(matches) {
 
     if (matches.length > 0) {
         const html = matches.map(match =>
-            `<div class="result">${match.name} </div>`
+            `<div class="result">${match.name}<div>${match.lat}, ${match.lon}</div>`
         )
             .join('');
         matchList.innerHTML = html;
@@ -85,16 +85,20 @@ function outputHTML(matches) {
     elementNodeListOf.forEach(e => {
         e.addEventListener('click', (e) => {
             let cityData = e.target.innerHTML;
-            let city = cityData.split(',')[0];
-            searchInput.value = city;
+            let cityinfo = cityData.split(',')[0];
+            searchInput.value = cityinfo;
+            city = cityinfo;
+            getValuesToday();
+            matchList.innerHTML = '';
+            searchModal.style.display = "none";
         });
     })
 }
 
-// searchInput.addEventListener('input', () => searchCity(searchInput.value))
+searchInput.addEventListener('input', () => searchCity(searchInput.value))
 
 const searchModal = document.querySelector('.searchModal')
-searchInput.addEventListener('click', () =>{
+searchInputButton.addEventListener('click', () => {
     searchModal.style.display = "block";
 })
 
@@ -145,26 +149,26 @@ function showAddCityButton() {
         element.innerText = 'Dodaj miasto';
         element.addEventListener('click', () => {
             searchModal.style.display = "block";
+            // element.addEventListener('click', () => {
+            //     let input = document.createElement('section');
+            //     input.classList.add('toEditList__item--options');
+            //     input.innerHTML = '<input type="text" placeholder="Dodaj miasto" name="name" id="add" class="addCityinput"/>';
+            //     cities__toEditList.appendChild(input);
+            //     element.replaceWith(input);
+            //     let a = document.getElementById('add');
+            //     input.addEventListener('blur', () => {
+            //         let newCity = a.value;
+            //         citiesList.push(newCity);
+            //         console.log(citiesList);
+            //         generateCitiesListToEdit();
+            //         showAddCityButton();
+            //         input.remove();
+            //     }, true);
+            // });
         });
-        // element.addEventListener('click', () => {
-        //     let input = document.createElement('section');
-        //     input.classList.add('toEditList__item--options');
-        //     input.innerHTML = '<input type="text" placeholder="Dodaj miasto" name="name" id="add" class="addCityinput"/>';
-        //     cities__toEditList.appendChild(input);
-        //     element.replaceWith(input);
-        //     let a = document.getElementById('add');
-        //     input.addEventListener('blur', () => {
-        //         let newCity = a.value;
-        //         citiesList.push(newCity);
-        //         console.log(citiesList);
-        //         generateCitiesListToEdit();
-        //         showAddCityButton();
-        //         input.remove();
-        //     }, true);
-        // });
-    }
-    if (citiesList.length >5) {
-        document.querySelector('.toEditList__item--options').remove()
+        if (citiesList.length > 5) {
+            document.querySelector('.toEditList__item--options').remove()
+        }
     }
 }
 
@@ -286,7 +290,6 @@ function generateCitiesList() {
         element.classList.add('cities__item')
         element.innerText = e;
     })
-    // document.querySelectorAll('.cities__item')[0].classList.add('cities__item--current')
     document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
 }
 
