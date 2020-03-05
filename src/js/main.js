@@ -49,7 +49,7 @@ let localTime;
 let tz;
 
 async function searchCity(city) {
-    if(city.length >0){
+    if (city.length > 0) {
         const result = await fetch(`http://api.weatherapi.com/v1/search.json?key=3f1ad206d1b94436825173623201101&q=${city}`)
         const cities = await result.json();
 
@@ -91,10 +91,14 @@ function outputHTML(matches) {
     })
 }
 
-searchInput.addEventListener('input', () => searchCity(searchInput.value))
+// searchInput.addEventListener('input', () => searchCity(searchInput.value))
+
+const searchModal = document.querySelector('.searchModal')
+searchInput.addEventListener('click', () =>{
+    searchModal.style.display = "block";
+})
 
 window.onload = function () {
-    generateCitiesList();
     console.log(citiesList);
     let loc = navigator.geolocation;
     if (loc) {
@@ -105,7 +109,12 @@ window.onload = function () {
                 .then(resp => resp.json())
                 .then(resp => {
                     city = resp.location.name;
+
+                    console.log(citiesList)
                     getValuesToday();
+                    citiesList.unshift(city)
+                    generateCitiesList();
+
                 })
                 .catch(err => {
                     console.error("Błąd ładowania danych")
@@ -118,7 +127,6 @@ window.onload = function () {
 
 function generateCitiesListToEdit() {
     document.querySelectorAll('.cities__toEditList__item').forEach(e => e.parentNode.removeChild(e));
-
     citiesList.forEach(e => {
         let element = document.createElement('section');
         cities__toEditList.appendChild(element);
@@ -136,23 +144,26 @@ function showAddCityButton() {
         element.classList.add('cities__toEditList__item--add');
         element.innerText = 'Dodaj miasto';
         element.addEventListener('click', () => {
-            let input = document.createElement('section');
-            input.classList.add('toEditList__item--options');
-            input.innerHTML = '<input type="text" placeholder="Dodaj miasto" name="name" id="add" class="addCityinput"/>';
-            cities__toEditList.appendChild(input);
-            element.replaceWith(input);
-            let a = document.getElementById('add');
-            input.addEventListener('blur', () => {
-                let newCity = a.value;
-                citiesList.push(newCity);
-                console.log(citiesList);
-                generateCitiesListToEdit();
-                showAddCityButton();
-                input.remove();
-            }, true);
+            searchModal.style.display = "block";
         });
+        // element.addEventListener('click', () => {
+        //     let input = document.createElement('section');
+        //     input.classList.add('toEditList__item--options');
+        //     input.innerHTML = '<input type="text" placeholder="Dodaj miasto" name="name" id="add" class="addCityinput"/>';
+        //     cities__toEditList.appendChild(input);
+        //     element.replaceWith(input);
+        //     let a = document.getElementById('add');
+        //     input.addEventListener('blur', () => {
+        //         let newCity = a.value;
+        //         citiesList.push(newCity);
+        //         console.log(citiesList);
+        //         generateCitiesListToEdit();
+        //         showAddCityButton();
+        //         input.remove();
+        //     }, true);
+        // });
     }
-    if (citiesList.length === 5) {
+    if (citiesList.length >5) {
         document.querySelector('.toEditList__item--options').remove()
     }
 }
@@ -198,26 +209,30 @@ function showOptions(e) {
             showAddCityButton()
         }, true);
         editButton.addEventListener("click", () => {
-            e.stopPropagation();
-            let indexToRemove = citiesList.indexOf(currentCity);
-            deleteButton.style.display = 'none';
-            editButton.style.display = 'none';
-            let a = document.getElementById('edited');
-            document.querySelector('.editCityinput').style.opacity = 1;
-            inputEditButton.addEventListener('blur', (e) => {
-                let newCity = a.value;
-                if (newCity.length === 0) {
-                    newCity = currentCity;
-                }
-                citiesList.splice(indexToRemove, 1, newCity);
-                let element = document.createElement('section');
-                cities__toEditList.appendChild(element);
-                element.classList.add('cities__toEditList__item');
-                element.innerText = newCity;
-                element.addEventListener('click', showOptions);
-                document.querySelector('.toEditList__item--options').replaceWith(element);
-            }, true);
+            searchModal.style.display = "block";
         });
+
+        // editButton.addEventListener("click", () => {
+        //     e.stopPropagation();
+        //     let indexToRemove = citiesList.indexOf(currentCity);
+        //     deleteButton.style.display = 'none';
+        //     editButton.style.display = 'none';
+        //     let a = document.getElementById('edited');
+        //     document.querySelector('.editCityinput').style.opacity = 1;
+        //     inputEditButton.addEventListener('blur', (e) => {
+        //         let newCity = a.value;
+        //         if (newCity.length === 0) {
+        //             newCity = currentCity;
+        //         }
+        //         citiesList.splice(indexToRemove, 1, newCity);
+        //         let element = document.createElement('section');
+        //         cities__toEditList.appendChild(element);
+        //         element.classList.add('cities__toEditList__item');
+        //         element.innerText = newCity;
+        //         element.addEventListener('click', showOptions);
+        //         document.querySelector('.toEditList__item--options').replaceWith(element);
+        //     }, true);
+        // });
     }
 }
 
@@ -228,6 +243,9 @@ about.addEventListener('click', () => {
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = "none";
+    }
+    if (e.target === searchModal) {
+        searchModal.style.display = "none";
     }
     generateCitiesList();
 });
@@ -268,6 +286,8 @@ function generateCitiesList() {
         element.classList.add('cities__item')
         element.innerText = e;
     })
+    // document.querySelectorAll('.cities__item')[0].classList.add('cities__item--current')
+    document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
 }
 
 function showSettingsList() {
