@@ -49,6 +49,30 @@ let urlWheather;
 let localTime;
 let tz;
 
+window.onload = function () {
+    console.log(citiesList);
+    let loc = navigator.geolocation;
+    if (loc) {
+        loc.getCurrentPosition(function (location) {
+            const lat = location.coords.latitude;
+            const lon = location.coords.longitude;
+            fetch(url + lat + "," + lon)
+                .then(resp => resp.json())
+                .then(resp => {
+                    city = resp.location.name;
+                    getValuesToday();
+                    citiesList.unshift(city)
+                    generateCitiesList();
+                })
+                .catch(err => {
+                    console.error("Błąd ładowania danych")
+                });
+        });
+    } else {
+        console.log("Nie udostępniono lokalizacji");
+    }
+};
+
 async function searchCity(city) {
     if (city.length > 0) {
         const result = await fetch(`http://api.weatherapi.com/v1/search.json?key=3f1ad206d1b94436825173623201101&q=${city}`)
@@ -71,15 +95,33 @@ function outputHTML(matches) {
     if (matches.length === 0) {
         document.querySelectorAll('.result').forEach(e => e.remove())
     }
-
     if (matches.length > 0) {
         const html = matches.map(match =>
-            `<div class="result">${match.name}<div>${match.lat}, ${match.lon}</div>`
+            `<div class="result">${match.name}<div>${match.lat}, ${match.lon}</div></div>`
         )
             .join('');
         matchList.innerHTML = html;
     }
+    // catchResultToAdd();
+    catchResultToFind()
+    // let elementNodeListOf = document.querySelectorAll('.result');
+    // console.log(elementNodeListOf)
+    // elementNodeListOf.forEach(e => {
+    //     e.addEventListener('click', (e) => {
+    //         let cityData = e.target.innerHTML;
+    //         let cityinfo = cityData.split(',')[0];
+    //         searchInput.value = cityinfo;
+    //         // city = cityinfo;
+    //         // getValuesToday();
+    //         citiesList.push(cityinfo)
+    //         matchList.innerHTML = '';
+    //         searchModal.style.display = "none";
+    //     });
+    // })
+}
 
+
+function catchResultToFind() {
     let elementNodeListOf = document.querySelectorAll('.result');
     console.log(elementNodeListOf)
     elementNodeListOf.forEach(e => {
@@ -89,6 +131,42 @@ function outputHTML(matches) {
             searchInput.value = cityinfo;
             city = cityinfo;
             getValuesToday();
+            // citiesList.push(cityinfo)
+            matchList.innerHTML = '';
+            searchModal.style.display = "none";
+        });
+    })
+}
+
+
+function catchResultToAdd() {
+    let elementNodeListOf = document.querySelectorAll('.result');
+    console.log(elementNodeListOf)
+    elementNodeListOf.forEach(e => {
+        e.addEventListener('click', (e) => {
+            let cityData = e.target.innerHTML;
+            let cityinfo = cityData.split(',')[0];
+            searchInput.value = cityinfo;
+            // city = cityinfo;
+            // getValuesToday();
+            citiesList.push(cityinfo)
+            matchList.innerHTML = '';
+            searchModal.style.display = "none";
+        });
+    })
+}
+
+function catchResultToEdit() {
+    let elementNodeListOf = document.querySelectorAll('.result');
+    console.log(elementNodeListOf)
+    elementNodeListOf.forEach(e => {
+        e.addEventListener('click', (e) => {
+            let cityData = e.target.innerHTML;
+            let cityinfo = cityData.split(',')[0];
+            searchInput.value = cityinfo;
+            // city = cityinfo;
+            // getValuesToday();
+            citiesList.push(cityinfo)
             matchList.innerHTML = '';
             searchModal.style.display = "none";
         });
@@ -100,46 +178,8 @@ searchInput.addEventListener('input', () => searchCity(searchInput.value))
 const searchModal = document.querySelector('.searchModal')
 searchInputButton.addEventListener('click', () => {
     searchModal.style.display = "block";
-})
+});
 
-window.onload = function () {
-    console.log(citiesList);
-    let loc = navigator.geolocation;
-    if (loc) {
-        loc.getCurrentPosition(function (location) {
-            const lat = location.coords.latitude;
-            const lon = location.coords.longitude;
-            fetch(url + lat + "," + lon)
-                .then(resp => resp.json())
-                .then(resp => {
-                    city = resp.location.name;
-
-                    console.log(citiesList)
-                    getValuesToday();
-                    citiesList.unshift(city)
-                    generateCitiesList();
-
-                })
-                .catch(err => {
-                    console.error("Błąd ładowania danych")
-                });
-        });
-    } else {
-        console.log("Nie udostępniono lokalizacji");
-    }
-};
-
-function generateCitiesListToEdit() {
-    document.querySelectorAll('.cities__toEditList__item').forEach(e => e.parentNode.removeChild(e));
-    citiesList.forEach(e => {
-        let element = document.createElement('section');
-        cities__toEditList.appendChild(element);
-        element.classList.add('cities__toEditList__item');
-        element.innerText = e;
-        element.addEventListener('click', showOptions);
-
-    });
-}
 
 function showAddCityButton() {
     if (citiesList.length < 5) {
@@ -147,25 +187,51 @@ function showAddCityButton() {
         cities__toEditList.appendChild(element);
         element.classList.add('cities__toEditList__item--add');
         element.innerText = 'Dodaj miasto';
+        // element.addEventListener('click', () => {
+        // searchModal.style.display = "block";
         element.addEventListener('click', () => {
+            // let input = document.createElement('section');
+            // input.classList.add('toEditList__item--options');
+            // input.innerHTML = '<input type="text" placeholder="Dodaj miasto" name="name" id="add" class="addCityinput"/>';
+            // cities__toEditList.appendChild(input);
+            // element.replaceWith(input);
+            // let a = document.getElementById('add');
+
+            // input.addEventListener('input', () => {
+
+            // input.addEventListener('click', () => {
             searchModal.style.display = "block";
-            // element.addEventListener('click', () => {
-            //     let input = document.createElement('section');
-            //     input.classList.add('toEditList__item--options');
-            //     input.innerHTML = '<input type="text" placeholder="Dodaj miasto" name="name" id="add" class="addCityinput"/>';
-            //     cities__toEditList.appendChild(input);
-            //     element.replaceWith(input);
-            //     let a = document.getElementById('add');
-            //     input.addEventListener('blur', () => {
-            //         let newCity = a.value;
-            //         citiesList.push(newCity);
-            //         console.log(citiesList);
-            //         generateCitiesListToEdit();
-            //         showAddCityButton();
-            //         input.remove();
-            //     }, true);
             // });
         });
+        // searchInput.addEventListener('input', searchCity(searchInput.value))
+        //
+        //     let elementNodeListOf = document.querySelectorAll('.result');
+        //     console.log(elementNodeListOf)
+        //     elementNodeListOf.forEach(e => {
+        //         e.addEventListener('click', (e) => {
+        //             let cityData = e.target.innerHTML;
+        //             let cityinfo = cityData.split(',')[0];
+        //             // searchInput.value = cityinfo;
+        //             // city = cityinfo;
+        //             console.log(citiesList)
+        //             citiesList.push(cityinfo);
+        //             console.log(citiesList)
+        //             matchList.innerHTML = '';
+        //             searchModal.style.display = "none";
+        //         });
+        //     })
+
+
+        // sear => {
+        //     let newCity = a.value;
+        //     citiesList.push(newCity);
+        //     console.log(citiesList);
+        //     generateCitiesListToEdit();
+        //     showAddCityButton();
+        //     input.remove();
+        // }, true);
+        // });
+        // });
         if (citiesList.length > 5) {
             document.querySelector('.toEditList__item--options').remove()
         }
@@ -240,6 +306,11 @@ function showOptions(e) {
     }
 }
 
+function editCity() {
+    //     let indexToRemove = citiesList.indexOf(currentCity);
+    //         citiesList.splice(indexToRemove, 1, newCity);
+}
+
 about.addEventListener('click', () => {
     modal.style.display = "block";
 });
@@ -262,10 +333,10 @@ hamburger.addEventListener('click', showCityList);
 
 settings.addEventListener('click', showSettingsList);
 
-searchButton.addEventListener('click', () => {
-    city = document.getElementById("customcity").value;
-    getValuesToday();
-});
+// searchButton.addEventListener('click', () => {
+//     city = document.getElementById("customcity").value;
+//     getValuesToday();
+// });
 
 cities.addEventListener('click', function (e) {
     if (e.target.className === ("cities__item")) {
@@ -291,6 +362,17 @@ function generateCitiesList() {
         element.innerText = e;
     })
     document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
+}
+
+function generateCitiesListToEdit() {
+    document.querySelectorAll('.cities__toEditList__item').forEach(e => e.parentNode.removeChild(e));
+    citiesList.forEach(e => {
+        let element = document.createElement('section');
+        cities__toEditList.appendChild(element);
+        element.classList.add('cities__toEditList__item');
+        element.innerText = e;
+        element.addEventListener('click', showOptions);
+    });
 }
 
 function showSettingsList() {
