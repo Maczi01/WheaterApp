@@ -40,14 +40,14 @@ body {
   }
 }
 
-.temp{
+.temp {
   display: flex;
 
 }
 
-.result{
+.result {
   list-style-type: none;
-   margin: 0;
+  margin: 0;
   border-radius: 52px;
   box-shadow: black;
   border: 1px solid #ddd; /* Add a border to all links */
@@ -59,6 +59,7 @@ body {
   color: white; /* Add a black text color */
   display: flex; /* Make it into a block element to fill the whole list */
   text-align: center;
+
   &__details {
     font-size: 12px; /* Increase the font-size */
   }
@@ -77,7 +78,8 @@ body {
     font-size: 30px;
     padding-bottom: 16px;
   }
-  &__date{
+
+  &__date {
     text-align: center;
     font-size: 30px;
     padding-bottom: 16px;
@@ -242,6 +244,7 @@ body {
   text-align: center;
   background-color: $yellow;
   color: $black;
+  order: 1;
 }
 
 .cities__toEditList__item {
@@ -254,6 +257,7 @@ body {
   text-align: center;
   background-color: $blue;
   color: $white;
+  order: 10;
 }
 
 
@@ -664,7 +668,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-.searchModal{
+.searchModal {
   &--input {
     margin: 0 auto;
     font-size: 20px;
