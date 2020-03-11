@@ -523,7 +523,10 @@ body {
   height: 42px;
   text-align: center;
   background-color: #f5f037;
-  color: #464646; }
+  color: #464646;
+  -webkit-box-ordinal-group: 11;
+      -ms-flex-order: 10;
+          order: 10; }
 
 .cities__toEditList__item {
   margin: 0 auto;
@@ -534,7 +537,10 @@ body {
   height: 42px;
   text-align: center;
   background-color: #56f7ff;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
 
 .toEditList__item {
   margin: 0 auto;
@@ -552,7 +558,10 @@ body {
     display: flex;
     font-size: 20px;
     text-align: center;
-    height: 42px; }
+    height: 42px;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1; }
     .toEditList__item--options--edit {
       padding-top: 8px;
       width: 90px;
