@@ -244,7 +244,7 @@ body {
   text-align: center;
   background-color: $yellow;
   color: $black;
-  order: 1;
+  order: 10;
 }
 
 .cities__toEditList__item {
@@ -257,7 +257,7 @@ body {
   text-align: center;
   background-color: $blue;
   color: $white;
-  order: 10;
+  order: 1;
 }
 
 
@@ -277,7 +277,7 @@ body {
     font-size: 20px;
     text-align: center;
     height: 42px;
-
+    order: 1;
     &--edit {
       padding-top: 8px;
 

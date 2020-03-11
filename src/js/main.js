@@ -246,28 +246,78 @@ function showOptions(e) {
     }
 
     document.querySelector('.cities__toEditList').addEventListener('click', (e) => {
-        // e.stopPropagation()
-        if (document.querySelectorAll('.toEditList__item--options').length === 1) {
-            if (citiesList.includes(e.target.innerHTML)) {
-                let rest = [];
-                document.querySelectorAll('.cities__toEditList__item').forEach(e => {
-                    rest.push(e.innerHTML);
-                });
+            // e.stopPropagation()
+            if (document.querySelectorAll('.toEditList__item--options').length === 1) {
+                if (citiesList.includes(e.target.innerHTML)) {
+                    let rest = [];
+                    document.querySelectorAll('.cities__toEditList__item').forEach(e => {
+                        rest.push(e.innerHTML);
+                    });
+                    let clickedCity = e.target.innerHTML
+                    let indexOfClickedCity = citiesList.indexOf(clickedCity);
 
-                console.log(arr_diff(citiesList, rest));
-                console.log(e.target.innerHTML)
-                generateCitiesListToEdit()
-                document.querySelector('.toEditList__item--options').remove();
-            } else if (e.target.innerHTML !== 'Edytuj' || e.target.innerHTML !== 'Usun') {
-                console.log('duck')
-                generateCitiesListToEdit();
-                document.querySelector('.toEditList__item--options').remove();
+                    document.querySelectorAll('.cities__toEditList__item').forEach(e => e.remove())
+                    for (let i = 0; i < citiesList.length; i++) {
+                        if (i === indexOfClickedCity) {
+                            let options = document.createElement('section');
+                            let editButton = document.createElement('div');
+                            let deleteButton = document.createElement('div');
+                            cities__toEditList.appendChild(options);
+                            options.appendChild(editButton);
+                            options.appendChild(deleteButton);
+                            let currentCity = clickedCity;
+                            options.classList.add('toEditList__item--options');
+                            editButton.classList.add('toEditList__item--options--edit');
+                            deleteButton.classList.add('toEditList__item--options--delete');
+                            editButton.innerText = 'Edytuj';
+                            editButton.id = 'quickEdit';
+                            deleteButton.innerText = 'Usun';
+                            deleteButton.addEventListener('click', () => {
+                                citiesList.splice(citiesList.indexOf(currentCity), 1);
+                                cities__toEditList.innerHTML = "";
+                                citiesList.forEach(e => {
+                                    let element = document.createElement('section');
+                                    cities__toEditList.appendChild(element);
+                                    element.classList.add('cities__toEditList__item');
+                                    element.innerText = e;
+                                    element.addEventListener('click', showOptions);
+                                });
+                                showAddCityButton()
+                            }, true);
+                            editButton.addEventListener("click", (e) => {
+                                searchModal.style.display = "block";
+                                searchModal.setAttribute('functionType', e.target.id)
+                                searchModal.setAttribute('cityToEdit', currentCity)
+                                searchInput.value = currentCity
+                            });
+                        } else {
+                            let element = document.createElement('section');
+                            cities__toEditList.appendChild(element);
+                            element.classList.add('cities__toEditList__item');
+                            element.innerText = citiesList[i];
+                            element.addEventListener('click', showOptions);
+                        }
+
+                    }
+                    // console.log(arr_diff(citiesList, rest));
+                    // console.log(e.target.innerHTML)
+                    // generateCitiesListToEdit()
+                    document.querySelector('.toEditList__item--options').remove();
+                } else if (e.target.innerHTML !== 'Edytuj' || e.target.innerHTML !== 'Usun') {
+                    console.log('duck')
+                    generateCitiesListToEdit();
+                    document.querySelector('.toEditList__item--options').remove();
+                }
             }
         }
-    }, true);
+
+        ,
+        true
+    )
+    ;
 }
 
-function arr_diff (a1, a2) {
+function arr_diff(a1, a2) {
 
     var a = [], diff = [];
 
