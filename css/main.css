@@ -942,4 +942,22 @@ body {
       -ms-flex-order: 1;
           order: 1; }
 
+.left_swipe {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  -ms-grid-row: 4;
+      grid-row-start: 4;
+  height: 100px;
+  width: 100px;
+  background-color: #c5402a; }
+
+.right_swipe {
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  -ms-grid-row: 4;
+      grid-row-start: 4;
+  height: 100px;
+  width: 100px;
+  background-color: #c5402a; }
+
 /*# sourceMappingURL=main.css.map */
