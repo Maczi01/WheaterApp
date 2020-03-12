@@ -277,10 +277,10 @@ body {
     font-size: 20px;
     text-align: center;
     height: 42px;
-    order: 1;
+    order: 1
+  ;
     &--edit {
       padding-top: 8px;
-
       width: 90px;
       border-bottom-left-radius: 52px;
       border-top-left-radius: 52px;
@@ -455,7 +455,6 @@ body {
 
 .searchButton {
   order: 1;
-
   font-size: 20px;
   height: 42px;
   border: solid 1px black;
@@ -679,5 +678,21 @@ body {
     border: solid 1px black;
     order: 1;
   }
+}
+
+.left_swipe{
+  grid-column-start: 1;
+  grid-row-start: 4;
+  height: 100px;
+  width: 100px;
+  background-color: #c5402a;
+}
+
+.right_swipe{
+  grid-column-start: 3;
+  grid-row-start: 4;
+  height: 100px;
+  width: 100px;
+  background-color: #c5402a;
 }
 

@@ -41,9 +41,12 @@ const main = document.querySelector(".main");
 const searchInputButton = document.querySelector(".cities__item--input");
 const searchInput = document.querySelector(".searchModal--input");
 const matchList = document.querySelector('.matchList');
-let citiesList = ['Wrocław', 'Katowice', 'Krakow', 'Warszawa'];
+const rightSwipe = document.querySelector('.right_swipe');
+const leftSwipe = document.querySelector('.left_swipe');
+let citiesList = ['Wroclaw', 'Katowice', 'Krakow', 'Warszawa'];
 let condition;
 let city;
+let counteer = 0;
 let urlWheather;
 let localTime;
 let tz;
@@ -167,8 +170,9 @@ function catchResultToEdit() {
             matchList.innerHTML = '';
             searchInput.value = '';
             searchModal.style.display = "none";
-            // showAddCityButton()
-            document.querySelector('.toEditList__item--options').remove();
+            if (document.querySelector('.toEditList__item--options')) {
+                document.querySelector('.toEditList__item--options').remove();
+            }
         });
     })
 }
@@ -183,6 +187,10 @@ searchInputButton.addEventListener('click', (e) => {
 });
 
 function showAddCityButton() {
+    if (document.querySelector('.cities__toEditList__item--add')) {
+        document.querySelector('.cities__toEditList__item--add').remove();
+    }
+
     if (citiesList.length < 5) {
         let element = document.createElement('section');
         element.id = 'quickAdd'
@@ -309,12 +317,9 @@ function showOptions(e) {
                     document.querySelector('.toEditList__item--options').remove();
                 }
             }
-        }
-
-        ,
-        true
-    )
-    ;
+        }, true
+    );
+    showAddCityButton()
 }
 
 function arr_diff(a1, a2) {
@@ -557,7 +562,23 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
+rightSwipe.addEventListener('click', () => {
+    counteer++;
+    if (counteer === citiesList.length) {
+        counteer = 0;
+    }
+    city = citiesList[counteer];
+    getValuesToday();
+})
 
+leftSwipe.addEventListener('click', () => {
+    if (counteer === 0) {
+        counteer = citiesList.length
+    }
+    counteer--;
+    city = citiesList[counteer];
+    getValuesToday();
+})
 
 
 
