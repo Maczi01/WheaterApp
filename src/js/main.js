@@ -13,6 +13,8 @@ if ('serviceWorker' in navigator) {
 }
 
 var moment = require('moment-timezone');
+const SwipeListener = require('swipe-listener');
+
 
 const settingsImage = document.querySelector(".settings__image");
 const temp = document.querySelector('.info__item--temperature--js');
@@ -562,22 +564,44 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
-rightSwipe.addEventListener('click', () => {
-    counteer++;
-    if (counteer === citiesList.length) {
-        counteer = 0;
-    }
-    city = citiesList[counteer];
-    getValuesToday();
-})
+// rightSwipe.addEventListener('click', () => {
+//     counteer++;
+//     if (counteer === citiesList.length) {
+//         counteer = 0;
+//     }
+//     city = citiesList[counteer];
+//     getValuesToday();
+// })
 
-leftSwipe.addEventListener('click', () => {
-    if (counteer === 0) {
-        counteer = citiesList.length
+let main = document.querySelector('.current');
+var listener = SwipeListener(main);
+
+
+main.addEventListener('swipe', (e) => {
+
+    let directions = e.detail.directions;
+    let x = e.detail.x;
+    let y = e.detail.y;
+
+    if (directions.left) {
+        if (counteer === 0) {
+            counteer = citiesList.length
+        }
+        counteer--;
+        city = citiesList[counteer];
+        getValuesToday();
     }
-    counteer--;
-    city = citiesList[counteer];
-    getValuesToday();
+
+    if (directions.right) {
+        counteer++;
+        if (counteer === citiesList.length) {
+            counteer = 0;
+        }
+        city = citiesList[counteer];
+        getValuesToday();
+    }
+
+
 })
 
 
