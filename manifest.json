@@ -1,7 +1,7 @@
 {
   "name": "poGO!da",
   "short_name": "poGO!da",
-  "theme_color": "#000000",
+  "theme_color": "#4d6ef9",
   "background_color": "#4d6ef9",
   "display": "fullscreen",
   "orientation": "portrait",
