@@ -1,9 +1,9 @@
 {
-  "name": "WTF: PWA",
+  "name": "poGO!da",
   "short_name": "WTF: PWA",
   "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone",
+  "background_color": "#4d6ef9",
+  "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/wtf-gulp-starter/",
   "start_url": "https://maczi01.github.io/WheaterApp/",
@@ -48,5 +48,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "splash_pages": null
 }

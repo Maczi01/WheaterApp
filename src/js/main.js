@@ -573,7 +573,8 @@ updateTime();
 //     getValuesToday();
 // })
 
-let main = document.querySelector('.current');
+let body = document.querySelector('body');
+console.log(main)
 var listener = SwipeListener(main);
 
 
