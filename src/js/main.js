@@ -556,7 +556,14 @@ function getValuesTomorrow() {
 
 function updateTime() {
     let timeToDisplay = moment.tz(tz);
-    time.innerHTML = timeToDisplay.format('hh:mm');
+    // time.innerHTML = timeToDisplay.format('hh:mm');
+    let sec = timeToDisplay.format('ss')
+    if (sec % 2 === 0) {
+        time.innerHTML = timeToDisplay.format('hh:mm');
+    } else {
+        time.innerHTML = timeToDisplay.format('hh mm');
+    }
+    console.log()
 
     date.innerHTML = timeToDisplay.format('dddd[,] d MMM YYYY ');
 }
