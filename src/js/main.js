@@ -12,7 +12,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-var moment = require('moment-timezone');
+const moment = require('moment-timezone');
 const SwipeListener = require('swipe-listener');
 
 
@@ -43,8 +43,7 @@ const main = document.querySelector(".main");
 const searchInputButton = document.querySelector(".cities__item--input");
 const searchInput = document.querySelector(".searchModal--input");
 const matchList = document.querySelector('.matchList');
-const rightSwipe = document.querySelector('.right_swipe');
-const leftSwipe = document.querySelector('.left_swipe');
+const update = document.querySelector('.update');
 let citiesList = ['Wroclaw', 'Katowice', 'Krakow', 'Warszawa'];
 let condition;
 let city;
@@ -101,7 +100,7 @@ function outputHTML(matches, functionType) {
     }
     if (matches.length > 0) {
         const html = matches.map(match =>
-            `<div class="result">${match.name}<div>${match.lat}, ${match.lon}</div></div>`
+            `<div class="result">${match.name}</div>`
         )
             .join('');
         matchList.innerHTML = html;
@@ -109,14 +108,11 @@ function outputHTML(matches, functionType) {
     switch (functionType) {
         case 'quickSearch':
             catchResultToFind();
-            console.log('KUIK SEARCH')
             break;
         case 'quickAdd':
-            console.log('KUIK ADD')
             catchResultToAdd();
             break;
         case 'quickEdit':
-            console.log('KUIK EDIT')
             catchResultToEdit();
             break;
     }
@@ -490,6 +486,9 @@ function getValuesToday() {
             wind.innerHTML = info.current.wind_kph + " km/h";
             condition = info.current.condition.code;
             console.log(info.current.condition.text);
+            // moment().calendar(info.current.last_updated)
+            update.innerHTML = `Last update: ${moment(info.current.last_updated).fromNow()}`
+            // update.innerHTML = `Last update: ${moment(info.current.last_updated)}`
             sunrise.innerHTML = info.forecast.forecastday[0].astro.sunrise;
             sunset.innerHTML = info.forecast.forecastday[0].astro.sunset;
             setBackground(condition);
@@ -565,7 +564,7 @@ function updateTime() {
     }
     console.log()
 
-    date.innerHTML = timeToDisplay.format('dddd[,] d MMM YYYY ');
+    date.innerHTML = timeToDisplay.format('dddd[,] D MMM YYYY ');
 }
 
 setInterval(updateTime, 1000);
@@ -597,19 +596,16 @@ main.addEventListener('swipe', (e) => {
         }
         counteer--;
         city = citiesList[counteer];
-        getValuesToday();
+        // getValuesToday();
     }
-
     if (directions.right) {
         counteer++;
         if (counteer === citiesList.length) {
             counteer = 0;
         }
         city = citiesList[counteer];
-        getValuesToday();
     }
-
-
+    getValuesToday();
 })
 
 

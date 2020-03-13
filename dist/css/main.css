@@ -942,4 +942,13 @@ body {
       -ms-flex-order: 1;
           order: 1; }
 
+.update {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  -ms-grid-row: 5;
+      grid-row-start: 5;
+  margin: -20px;
+  font-size: 10px;
+  text-align: center; }
+
 /*# sourceMappingURL=main.css.map */
