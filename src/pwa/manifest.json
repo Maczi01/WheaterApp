@@ -1,10 +1,10 @@
 {
   "name": "poGO!da",
   "short_name": "poGO!da",
-  "theme_color": "#4d6ef9",
-  "background_color": "#4d6ef9",
-  "display": "fullscreen",
-  "orientation": "portrait",
+  "theme_color": "#FFEB64",
+  "background_color": "#FFEB64",
+  "display": "standalone",
+  "orientation": "portrait-primary",
   "scope": "/wtf-gulp-starter/",
   "start_url": "https://maczi01.github.io/WheaterApp/",
   "icons": [

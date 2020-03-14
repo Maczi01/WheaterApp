@@ -53,7 +53,6 @@ let localTime;
 let tz;
 
 window.onload = function () {
-    console.log(citiesList);
     let loc = navigator.geolocation;
     if (loc) {
         loc.getCurrentPosition(function (location) {
@@ -85,9 +84,8 @@ async function searchCity(city, functionType) {
             const regex = new RegExp(`^${city}`, 'gi');
             return place.name.match(regex)
         });
-
         if (city.length === 0) {
-            matches = []
+            matches = [];
             matchList.innerHTML = '';
         }
         outputHTML(matches, functionType);
@@ -184,7 +182,10 @@ searchInputButton.addEventListener('click', (e) => {
     searchModal.setAttribute('functionType', e.target.id)
 });
 
+
 function showAddCityButton() {
+
+
     if (document.querySelector('.cities__toEditList__item--add')) {
         document.querySelector('.cities__toEditList__item--add').remove();
     }
@@ -204,6 +205,8 @@ function showAddCityButton() {
         }
     }
 }
+
+
 
 editCitiesList.addEventListener('click', () => {
     cities__toEditList.innerHTML = "";
@@ -252,7 +255,6 @@ function showOptions(e) {
     }
 
     document.querySelector('.cities__toEditList').addEventListener('click', (e) => {
-            // e.stopPropagation()
             if (document.querySelectorAll('.toEditList__item--options').length === 1) {
                 if (citiesList.includes(e.target.innerHTML)) {
                     let rest = [];
@@ -409,8 +411,10 @@ function generateCitiesList() {
         element.classList.add('cities__item')
         element.innerText = e;
     })
-    // if (citiesList > 0) {
-    //     document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
+    // if (citiesList > 0 && navigator.geolocation) {
+    //     console.log('gęś')
+    //     // document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
+    //     document.querySelectorAll('.cities__item')[0].innerHTML += 'ble '
     // }
 }
 
@@ -460,15 +464,6 @@ function showSettingsList() {
     settingsList.classList.toggle("settings__list--visible");
     settingsImage.classList.toggle('settings__image--active');
     cities__toEditList.classList.remove('cities__toEditList--visible');
-    // if(document.querySelector('.cities__toEditList--visible')){
-    //     document.querySelector('.cities__toEditList--visible').addEventListener('click', (e)=>{
-    //         if(document.querySelectorAll('.toEditList__item--options') >0){
-    //             if(e.target !== '.toEditList__item--options'){
-    //                 console.log('kaczka')
-    //             }
-    //         }
-    //     });
-    // }
 }
 
 function getValuesToday() {
@@ -570,19 +565,8 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
-// rightSwipe.addEventListener('click', () => {
-//     counteer++;
-//     if (counteer === citiesList.length) {
-//         counteer = 0;
-//     }
-//     city = citiesList[counteer];
-//     getValuesToday();
-// })
-
 let body = document.querySelector('body');
-console.log(main)
 var listener = SwipeListener(main);
-
 
 main.addEventListener('swipe', (e) => {
 
@@ -606,7 +590,7 @@ main.addEventListener('swipe', (e) => {
         city = citiesList[counteer];
     }
     getValuesToday();
-})
+});
 
 
 
