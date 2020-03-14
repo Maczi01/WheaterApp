@@ -475,6 +475,9 @@ body {
   transition: transform 500ms linear;
   transition: transform 500ms linear, -webkit-transform 500ms linear; }
 
+.settings__image--edit {
+  background-image: url("../assets/img/location.png"); }
+
 .settings__image--active {
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
