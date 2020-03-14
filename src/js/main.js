@@ -207,7 +207,6 @@ function showAddCityButton() {
 }
 
 
-
 editCitiesList.addEventListener('click', () => {
     cities__toEditList.innerHTML = "";
     cities__toEditList.classList.toggle("cities__toEditList--visible");
@@ -305,11 +304,7 @@ function showOptions(e) {
                             element.innerText = citiesList[i];
                             element.addEventListener('click', showOptions);
                         }
-
                     }
-                    // console.log(arr_diff(citiesList, rest));
-                    // console.log(e.target.innerHTML)
-                    // generateCitiesListToEdit()
                     document.querySelector('.toEditList__item--options').remove();
                 } else if (e.target.innerHTML !== 'Edytuj' || e.target.innerHTML !== 'Usun') {
                     console.log('duck')
