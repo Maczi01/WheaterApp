@@ -189,8 +189,18 @@ body {
   transition: transform 500ms linear;
 }
 
-.settings__image--edit{
-  background-image: url("../assets/img/location.png");
+.settings__edit{
+  background-color: rgb(50, 190, 166);
+  display: block;
+  grid-column-start: 3;
+  grid-row-start: 2;
+  margin-left: -45px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 10px;
+  width: 45px;
+  height: 45px;
+  color: $black;
 }
 
 .settings__image--active {
@@ -321,7 +331,6 @@ body {
   margin: 0 auto;
   font-size: 20px;
   padding-top: 8px;
-
   z-index: 3;
   position: absolute;
   opacity: 1;
@@ -331,7 +340,6 @@ body {
   color: black;
   border: solid 1px black;
 }
-
 
 .settings__list {
   display: none;
@@ -456,7 +464,6 @@ body {
   }
 }
 
-
 .searchButton {
   order: 1;
   font-size: 20px;
@@ -579,8 +586,6 @@ body {
   @media (min-width: $phone) {
     display: none;
   }
-
-
   border: 0;
   cursor: pointer;
 

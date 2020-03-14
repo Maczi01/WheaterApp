@@ -475,8 +475,20 @@ body {
   transition: transform 500ms linear;
   transition: transform 500ms linear, -webkit-transform 500ms linear; }
 
-.settings__image--edit {
-  background-image: url("../assets/img/location.png"); }
+.settings__edit {
+  background-color: #32bea6;
+  display: block;
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  margin-left: -45px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 10px;
+  width: 45px;
+  height: 45px;
+  color: #464646; }
 
 .settings__image--active {
   -webkit-transform: rotate(180deg);

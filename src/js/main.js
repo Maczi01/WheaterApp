@@ -30,6 +30,7 @@ const settingsList = document.querySelector('.settings__list');
 const cities__toEditList = document.querySelector('.cities__toEditList');
 const hamburger = document.querySelector('.hamburger--js');
 const settings = document.querySelector('.settings--js');
+const settingsEdit = document.querySelector('.settings--js');
 const about = document.querySelector(".settings__item--about");
 const editCitiesList = document.querySelector(".settings__item--edit");
 const listCitiesToEdit = document.querySelector(".cities__toEditList");
@@ -212,6 +213,12 @@ editCitiesList.addEventListener('click', () => {
     cities__toEditList.classList.toggle("cities__toEditList--visible");
     settingsList.classList = "settings__list";
     generateCitiesListToEdit();
+    // if (document.querySelector('.cities__toEditList--visible')) {
+    //     settingsImage.src = "assets/img/back.svg";
+    // }
+    // if (document.querySelector('.cities__toEditList')) {
+    //     settingsImage.src = "assets/img/settings.svg";
+    // }
 });
 
 listCitiesToEdit.addEventListener('changes', showAddCityButton);
@@ -449,11 +456,6 @@ function generateCitiesListToEdit() {
     showAddCityButton();
 }
 
-if (document.querySelector('.cities__toEditList--visible')) {
-    console.log('kaczka')
-    document.querySelector('.cities__toEditList--visible').addEventListener('click', (e) => {
-    });
-}
 
 function showSettingsList() {
     settingsList.classList.toggle("settings__list--visible");
