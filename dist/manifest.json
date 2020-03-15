@@ -5,7 +5,7 @@
   "background_color": "#FFEB64",
   "display": "fullscreen",
   "orientation": "portrait",
-  "scope": "/wtf-gulp-starter/",
+  "scope": ".",
   "start_url": "https://maczi01.github.io/WheaterApp/",
   "icons": [
     {

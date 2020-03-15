@@ -79,14 +79,6 @@ window.onload = function () {
         generateCitiesList();
     }
 };
-//
-// location.addEventListener('change', () => {
-//     if (document.getElementById('roundedOne').checked) {
-//         console.log("gęś")
-//     }  else{
-//         navigator.geolocation = null;
-//     }
-// })
 
 async function searchCity(city, functionType) {
     if (city.length > 0) {
@@ -152,7 +144,6 @@ main.addEventListener('swipe', (e) => {
     }
     getValuesToday();
 });
-
 
 searchInput.addEventListener('input', () => searchCity(searchInput.value, searchModal.getAttribute('functionType')))
 
@@ -241,9 +232,9 @@ function generateCitiesList() {
         element.innerText = e;
     })
     // if (citiesList > 0 && navigator.geolocation) {
-    //     console.log('gęś')
-    //     // document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
-    //     document.querySelectorAll('.cities__item')[0].innerHTML += 'ble '
+        //     console.log('gęś')
+        document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
+        //     document.querySelectorAll('.cities__item')[0].innerHTML += 'ble '
     // }
 }
 
