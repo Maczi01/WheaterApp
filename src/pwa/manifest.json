@@ -6,7 +6,7 @@
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": ".",
-  "start_url": "https://github.com/Maczi01/WheaterApp",
+  "start_url": "/index.html",
   "icons": [
     {
       "src": "assets/pwa/icons/icon-72x72.png",

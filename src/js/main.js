@@ -231,11 +231,7 @@ function generateCitiesList() {
         element.classList.add('cities__item')
         element.innerText = e;
     })
-    // if (citiesList > 0 && navigator.geolocation) {
-        //     console.log('gęś')
         document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
-        //     document.querySelectorAll('.cities__item')[0].innerHTML += 'ble '
-    // }
 }
 
 function generateCitiesListToEdit() {
