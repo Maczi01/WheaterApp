@@ -3,7 +3,7 @@
   "short_name": "poGO!da",
   "theme_color": "#FFEB64",
   "background_color": "#FFEB64",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "scope": ".",
   "start_url": "https://github.com/Maczi01/WheaterApp",

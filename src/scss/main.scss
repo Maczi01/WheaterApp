@@ -98,12 +98,14 @@ body {
       text-shadow: none;
       margin: 0 auto;
       font-size: 20px;
-      padding-top: 8px;
+      padding-top: 6px;
       border-radius: 52px;
       width: 180px;
-      height: 42px;
-      background-color: $yellow;
-      color: $black;
+      height: 48px;
+      background-color: white;
+      border: 2px solid #70DFDF;
+
+      color: #6980C5;
       @media (max-width: $phone) {
         font-size: 15px;
         height: 30px;
@@ -139,22 +141,6 @@ body {
   }
 }
 
-//.hamburger {
-//   position: absolute;
-//   margin: 2rem 0 0 2rem;
-//   font-size: 20px;
-//   padding-top: 12px;
-//   text-align: center;
-//   border-radius: 10px;
-//   width: 45px;
-//   height: 45px;
-//   background-color: $green;
-//   color: $black;
-//   @media (min-width: $phone) {
-//     display: none;
-//   }
-// }
-
 .settings {
   //padding-top: 14px;
   background-color: rgb(50, 190, 166);
@@ -189,20 +175,6 @@ body {
   transform: rotate(0deg);
   transition: transform 500ms linear;
 }
-
-//.settings__edit{
-//  background-color: rgb(50, 190, 166);
-//  display: block;
-//  grid-column-start: 3;
-//  grid-row-start: 2;
-//  margin-left: -45px;
-//  font-size: 15px;
-//  text-align: center;
-//  border-radius: 10px;
-//  width: 45px;
-//  height: 45px;
-//  color: $black;
-//}
 
 .settings__image--active {
   transform: rotate(180deg);
@@ -382,7 +354,8 @@ body {
     justify-content: center;
     //display: flex;
   }
-  &--edit{
+
+  &--edit {
     justify-content: center;
 
   }
@@ -433,15 +406,21 @@ body {
 
   &__item {
     order: -1;
-    margin: 0 auto;
+    margin: 10px;
     font-size: 20px;
     padding-top: 8px;
-    border-radius: 52px;
+    border-radius: 7px;
     width: 180px;
     height: 42px;
-    background-color: $green;
+    background-color: #70DFDF;
     color: $white;
     //transition: background-color .5s;
+    @media (max-width: $phone) {
+      background-color: $black;
+      color: #6980C5;
+      border: 3px solid #70DFDF;
+      height: 48px;
+    }
 
     &--current {
       //display: flex;
@@ -513,16 +492,16 @@ body {
     padding: 8px;
     font-size: 1rem;
     border-radius: 10px;
-    border: 1px solid $black;
+    //border: 1px solid $black;
+    border: 3px solid #70DFDF;
     @media (max-width: 640px) {
       height: auto;
       font-size: 1.25rem;
       width: 9.5rem;
-
     }
 
     &--value {
-
+      color: #6980C5;
       margin-top: -2px;
       font-size: 1.75rem;
 
@@ -530,6 +509,7 @@ body {
 
     &--container {
       display: flex;
+      color: #6980C5;
       @media (max-width: 640px) {
         display: block;
 

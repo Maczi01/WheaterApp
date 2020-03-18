@@ -15,7 +15,6 @@ if ('serviceWorker' in navigator) {
 const moment = require('moment-timezone');
 const SwipeListener = require('swipe-listener');
 
-const body = document.querySelector('body');
 const settingsImage = document.querySelector(".settings__image");
 const temp = document.querySelector('.info__item--temperature--js');
 const humidity = document.querySelector('.info__item--humidity--js');
@@ -46,7 +45,6 @@ const searchInput = document.querySelector(".searchModal--input");
 const matchList = document.querySelector('.matchList');
 const update = document.querySelector('.update__last');
 const searchModal = document.querySelector('.searchModal')
-const location = document.querySelector('.roundedOne');
 const listener = SwipeListener(main);
 let citiesList = ['Wroclaw', 'Katowice', 'Krakow', 'Warszawa'];
 let condition;
@@ -122,18 +120,15 @@ function outputHTML(matches, functionType) {
 }
 
 main.addEventListener('swipe', (e) => {
-
     let directions = e.detail.directions;
     let x = e.detail.x;
     let y = e.detail.y;
-
     if (directions.left) {
         if (counteer === 0) {
             counteer = citiesList.length
         }
         counteer--;
         city = citiesList[counteer];
-        // getValuesToday();
     }
     if (directions.right) {
         counteer++;
@@ -231,7 +226,7 @@ function generateCitiesList() {
         element.classList.add('cities__item')
         element.innerText = e;
     })
-        document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
+    document.querySelectorAll('.cities__item')[0].innerHTML += '<img src="assets/img/location.png" height="30" width="30" class="cities__item--current">'
 }
 
 function generateCitiesListToEdit() {
