@@ -80,7 +80,7 @@ window.onload = function () {
 
 async function searchCity(city, functionType) {
     if (city.length > 0) {
-        const result = await fetch(`http://api.weatherapi.com/v1/search.json?key=3f1ad206d1b94436825173623201101&q=${city}`)
+        const result = await fetch(`https://api.weatherapi.com/v1/search.json?key=3f1ad206d1b94436825173623201101&q=${city}`)
         const cities = await result.json();
 
         let matches = cities.filter(place => {
@@ -121,8 +121,8 @@ function outputHTML(matches, functionType) {
 
 main.addEventListener('swipe', (e) => {
     let directions = e.detail.directions;
-    let x = e.detail.x;
-    let y = e.detail.y;
+    // let x = e.detail.x;
+    // let y = e.detail.y;
     if (directions.left) {
         if (counteer === 0) {
             counteer = citiesList.length

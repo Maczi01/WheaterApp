@@ -445,7 +445,7 @@ body {
       border-radius: 52px;
       width: 62px;
       height: 30px;
-      background-color: #f5f037;
+      background-color: #70DFDF;
       color: #fffff5; }
       @media (min-width: 640px) {
         .current__days--hamburger {
@@ -850,7 +850,7 @@ body {
   border-radius: 10px;
   width: 45px;
   height: 45px;
-  background-color: #69FF34;
+  background-color: #70DFDF;
   color: #fffff5;
   border: 0;
   cursor: pointer; }
@@ -876,7 +876,7 @@ body {
   position: absolute;
   width: 35px;
   height: 2px;
-  background-color: #000;
+  background-color: #6980C5;
   -webkit-transition: -webkit-transform 220ms ease-in-out;
   transition: -webkit-transform 220ms ease-in-out;
   -o-transition: transform 220ms ease-in-out;
@@ -887,7 +887,7 @@ body {
     position: absolute;
     width: 35px;
     height: 2px;
-    background-color: #000;
+    background-color: #6980C5;
     content: ''; }
   .hamburger__bars:before {
     top: -12px;

@@ -132,7 +132,7 @@ body {
       border-radius: 52px;
       width: 62px;
       height: 30px;
-      background-color: $yellow;
+      background-color: #70DFDF;
       color: $black;
       @media (min-width: $phone) {
         display: none;
@@ -572,7 +572,7 @@ body {
   border-radius: 10px;
   width: 45px;
   height: 45px;
-  background-color: $green;
+  background-color: #70DFDF;
   color: $black;
   @media (min-width: $phone) {
     display: none;
@@ -599,7 +599,7 @@ body {
   position: absolute;
   width: 35px;
   height: 2px;
-  background-color: #000;
+  background-color: #6980C5;
   transition: transform 220ms ease-in-out;
 
   &:before, &:after {
@@ -607,7 +607,7 @@ body {
     position: absolute;
     width: 35px;
     height: 2px;
-    background-color: #000;
+    background-color: #6980C5;
     content: '';
   }
 
