@@ -342,8 +342,9 @@ body {
   -ms-grid-columns: 40px 1fr 40px;
   grid-template-columns: 40px 1fr 40px;
   border-radius: 30px;
-  background-color: #56f7ff;
-  color: #FFFFFF;
+  border: 3px solid #6980C5;
+  background-color: #FFFFFF;
+  color: #6980C5;
   font-size: 40px; }
   @media (max-width: 640px) {
     .main {
@@ -361,14 +362,14 @@ body {
 .result {
   list-style-type: none;
   margin: 0;
-  border-radius: 52px;
+  border-radius: 7px;
   -webkit-box-shadow: black;
           box-shadow: black;
   border: 1px solid #ddd;
   /* Add a border to all links */
   margin-top: -1px;
   /* Prevent double borders */
-  background-color: #69FF34;
+  background-color: #70DFDF;
   /* Grey background color */
   padding: 12px;
   /* Add some padding */
@@ -391,7 +392,6 @@ body {
   margin-top: 20px;
   text-align: center;
   font-size: 5rem;
-  text-shadow: black 0.1em 0.1em 0.2em;
   -ms-grid-column: 2;
       grid-column-start: 2;
   -ms-grid-row: 3;
