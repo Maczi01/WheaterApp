@@ -687,7 +687,7 @@ body {
       position: absolute;
       background-color: #FFFFFF;
       border-radius: 20px;
-      border: solid 1px #fffff5; } }
+      border: solid 3px #70DFDF; } }
   .cities__item {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
