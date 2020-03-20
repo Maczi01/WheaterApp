@@ -46,7 +46,7 @@ const matchList = document.querySelector('.matchList');
 const update = document.querySelector('.update__last');
 const searchModal = document.querySelector('.searchModal')
 const listener = SwipeListener(main);
-let citiesList = ['Wroclaw', 'Katowice', 'Krakow', 'Warszawa'];
+let citiesList = ['Wroclaw', 'Katowice', 'Kostrzyca', 'Warszawa'];
 let condition;
 let city;
 let counteer = 0;
@@ -121,8 +121,6 @@ function outputHTML(matches, functionType) {
 
 main.addEventListener('swipe', (e) => {
     let directions = e.detail.directions;
-    // let x = e.detail.x;
-    // let y = e.detail.y;
     if (directions.left) {
         if (counteer === 0) {
             counteer = citiesList.length
@@ -171,27 +169,6 @@ window.addEventListener('click', (e) => {
     if (e.target === searchModal) {
         searchModal.style.display = "none";
     }
-    // if (document.querySelector('.cities__toEditList--visible')) {
-    //     document.querySelector('.cities__toEditList').addEventListener('click', (e) => {
-    //         // e.stopPropagation()
-    //         if (document.querySelectorAll('.toEditList__item--options').length === 1) {
-    //             // if(citiesList.indexOf(e.target.innerHTML)> 0){
-    //             //     console.log(Rekin)
-    //             // }
-    //
-    //             if (e.target.innerHTML !== 'Edytuj' || e.target.innerHTML !== 'Usun') {
-    //                 // console.log(e.target.inner/HTML)
-    //                 console.log('duck')
-    //                 generateCitiesListToEdit();
-    //
-    //                 // document.querySelectorAll('.cities__toEditList__item').forEach(e => e.parentNode.removeChild(e));
-    //                 // document.querySelectorAll('.toEditList__item--options').forEach(e => e.remove());
-    //                 document.querySelector('.toEditList__item--options').remove();
-    //             }
-    //             // generateCitiesListToEdit();
-    //         }
-    //     }, true);
-    // }
     generateCitiesList();
 });
 
@@ -238,29 +215,6 @@ function generateCitiesListToEdit() {
         element.classList.add('cities__toEditList__item');
         element.innerText = e;
         element.addEventListener('click', showOptions);
-
-        // if (document.querySelector('.cities__toEditList--visible')) {
-        //     document.querySelector('.cities__toEditList').addEventListener('click', (e) => {
-        //         // e.stopPropagation()
-        //         if (document.querySelectorAll('.toEditList__item--options').length === 1) {
-        //             // if(citiesList.indexOf(e.target.innerHTML)> 0){
-        //             //     console.log(Rekin)
-        //             // }
-        //
-        //             if (e.target.innerHTML !== 'Edytuj' || e.target.innerHTML !== 'Usun') {
-        //                 // console.log(e.target.inner/HTML)
-        //                 console.log('duck')
-        //                 generateCitiesListToEdit();
-        //
-        //                 // document.querySelectorAll('.cities__toEditList__item').forEach(e => e.parentNode.removeChild(e));
-        //                 // document.querySelectorAll('.toEditList__item--options').forEach(e => e.remove());
-        //                 document.querySelector('.toEditList__item--options').remove();
-        //             }
-        //             // generateCitiesListToEdit();
-        //         }
-        //     }, true);
-        // }
-
     });
     showAddCityButton();
 }
@@ -468,7 +422,7 @@ function getValuesTomorrow() {
             const info = resp;
             temp.innerHTML = info.forecast.forecastday[1].day.maxtemp_c + "°C";
             humidity.innerHTML = info.forecast.forecastday[1].day.avghumidity + "%";
-            clouds.innerHTML = "";
+            clouds.innerHTML = " ";
             condition = info.current.condition.code;
             wind.innerHTML = info.forecast.forecastday[1].day.maxwind_kph + " km/h";
             sunrise.innerHTML = info.forecast.forecastday[1].astro.sunrise;
@@ -540,14 +494,12 @@ function catchResultToEdit() {
 function updateTime() {
     let timeToDisplay = moment.tz(tz);
     // time.innerHTML = timeToDisplay.format('hh:mm');
-    let sec = timeToDisplay.format('ss')
+    let sec = timeToDisplay.format('ss');
     if (sec % 2 === 0) {
         time.innerHTML = timeToDisplay.format('hh:mm');
     } else {
         time.innerHTML = timeToDisplay.format('hh mm');
     }
-    console.log()
-
     date.innerHTML = timeToDisplay.format('dddd[,] D MMM YYYY ');
 }
 
