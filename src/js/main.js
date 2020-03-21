@@ -38,6 +38,7 @@ const today = document.querySelector(".current__days--today");
 const tomorrow = document.querySelector(".current__days--tomorrow");
 const time = document.querySelector('.current__time');
 const date = document.querySelector('.current__date');
+const day = document.querySelector('.current__day');
 const url = "https://api.weatherapi.com/v1/forecast.json?key=3f1ad206d1b94436825173623201101&q=";
 const main = document.querySelector(".main");
 const searchInputButton = document.querySelector(".cities__item--input");
@@ -46,7 +47,7 @@ const matchList = document.querySelector('.matchList');
 const update = document.querySelector('.update__last');
 const searchModal = document.querySelector('.searchModal')
 const listener = SwipeListener(main);
-let citiesList = ['Wroclaw', 'Katowice', 'Kostrzyca', 'Warszawa'];
+let citiesList = ['Wroclaw', 'Katowice', 'Madera', 'Seattle'];
 let condition;
 let city;
 let counteer = 0;
@@ -141,7 +142,6 @@ main.addEventListener('swipe', (e) => {
 searchInput.addEventListener('input', () => searchCity(searchInput.value, searchModal.getAttribute('functionType')))
 
 searchInputButton.addEventListener('click', (e) => {
-    console.log(e.target.id)
     searchModal.style.display = "block";
     searchModal.setAttribute('functionType', e.target.id)
 });
@@ -333,7 +333,6 @@ function showOptions(e) {
                     }
                     document.querySelector('.toEditList__item--options').remove();
                 } else if (e.target.innerHTML !== 'Edytuj' || e.target.innerHTML !== 'Usun') {
-                    console.log('duck')
                     generateCitiesListToEdit();
                     document.querySelector('.toEditList__item--options').remove();
                 }
@@ -366,9 +365,8 @@ function getValuesToday() {
             clouds.innerHTML = info.current.cloud + "%";
             wind.innerHTML = info.current.wind_kph + " km/h";
             condition = info.current.condition.code;
-            console.log(info.current.condition.text);
             // moment().calendar(info.current.last_updated)
-            update.innerHTML = `Last update: ${moment(info.current.last_updated).fromNow()}. Data from wheatherapi.com`
+            update.innerHTML = `Last update: ${moment(info.current.last_updated).fromNow()}. <p>Data from wheatherapi.com</p>`
             // update.innerHTML = `Last update: ${moment(info.current.last_updated)}`
             sunrise.innerHTML = info.forecast.forecastday[0].astro.sunrise;
             sunset.innerHTML = info.forecast.forecastday[0].astro.sunset;
@@ -471,7 +469,6 @@ function catchResultToAdd() {
 function catchResultToEdit() {
     let cityToEdit = searchModal.getAttribute('cityToEdit');
     let elementNodeListOf = document.querySelectorAll('.result');
-    console.log(elementNodeListOf)
     let indexToRemove = citiesList.indexOf(cityToEdit);
     elementNodeListOf.forEach(e => {
         e.addEventListener('click', (e) => {
@@ -493,14 +490,14 @@ function catchResultToEdit() {
 
 function updateTime() {
     let timeToDisplay = moment.tz(tz);
-    // time.innerHTML = timeToDisplay.format('hh:mm');
     let sec = timeToDisplay.format('ss');
     if (sec % 2 === 0) {
         time.innerHTML = timeToDisplay.format('hh:mm');
     } else {
         time.innerHTML = timeToDisplay.format('hh mm');
     }
-    date.innerHTML = timeToDisplay.format('dddd[,] D MMM YYYY ');
+    date.innerHTML = timeToDisplay.format('D MMM YYYY ');
+    day.innerHTML = timeToDisplay.format('dddd');
 }
 
 setInterval(updateTime, 1000);

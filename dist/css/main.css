@@ -400,7 +400,7 @@ body {
     text-align: center;
     font-size: 30px;
     padding-bottom: 16px; }
-  .current__date {
+  .current__date, .current__day {
     text-align: center;
     font-size: 30px;
     padding-bottom: 16px; }
