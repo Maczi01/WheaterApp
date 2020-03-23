@@ -400,7 +400,7 @@ body {
     text-align: center;
     font-size: 30px;
     padding-bottom: 16px; }
-  .current__date {
+  .current__date, .current__day {
     text-align: center;
     font-size: 30px;
     padding-bottom: 16px; }
@@ -446,7 +446,7 @@ body {
       width: 62px;
       height: 30px;
       background-color: #70DFDF;
-      color: #fffff5; }
+      color: #58a1ff; }
       @media (min-width: 640px) {
         .current__days--hamburger {
           display: none; } }
@@ -467,7 +467,7 @@ body {
   border-radius: 10px;
   width: 45px;
   height: 45px;
-  color: #fffff5; }
+  color: #58a1ff; }
 
 .settings__image {
   -webkit-transform: rotate(0deg);
@@ -510,7 +510,7 @@ body {
     top: 1rem;
     background-color: #FFFFFF;
     border-radius: 20px;
-    border: solid 1px #fffff5; }
+    border: solid 1px #58a1ff; }
     @media (max-width: 640px) {
       .cities__toEditList--visible {
         left: 5rem;
@@ -527,7 +527,7 @@ body {
   height: 42px;
   text-align: center;
   background-color: #f5f037;
-  color: #fffff5;
+  color: #58a1ff;
   -webkit-box-ordinal-group: 11;
       -ms-flex-order: 10;
           order: 10; }
@@ -536,15 +536,15 @@ body {
   margin: 0 auto;
   font-size: 20px;
   padding-top: 8px;
-  border-radius: 52px;
   width: 180px;
   height: 42px;
   text-align: center;
-  background-color: #56f7ff;
-  color: #FFFFFF;
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
-          order: 1; }
+          order: 1;
+  border-radius: 7px;
+  background-color: #70DFDF;
+  color: #FFFFFF; }
 
 .toEditList__item {
   margin: 0 auto;
@@ -569,15 +569,19 @@ body {
     .toEditList__item--options--edit {
       padding-top: 8px;
       width: 90px;
-      border-bottom-left-radius: 52px;
-      border-top-left-radius: 52px;
-      background-color: #3727ff; }
+      border-radius: 7px;
+      background-color: #6980C5;
+      background-image: url("../assets/img/edit.svg");
+      background-repeat: no-repeat;
+      background-position: center; }
     .toEditList__item--options--delete {
       padding-top: 8px;
       width: 90px;
-      border-bottom-right-radius: 52px;
-      border-top-right-radius: 52px;
-      background-color: #c5402a; }
+      border-radius: 7px;
+      background-color: #6980C5;
+      background-image: url("../assets/img/delete.svg");
+      background-repeat: no-repeat;
+      background-position: center; }
 
 .editCityinput {
   z-index: 3;
@@ -617,7 +621,7 @@ body {
     top: 1rem;
     background-color: #FFFFFF;
     border-radius: 20px;
-    border: solid 1px #fffff5; }
+    border: solid 1px #58a1ff; }
     @media (max-width: 640px) {
       .settings__list--visible {
         left: 5rem;
@@ -629,15 +633,15 @@ body {
   margin: 0 auto;
   font-size: 20px;
   padding-top: 8px;
-  border-radius: 52px;
   width: 180px;
   height: 42px;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #56f7ff;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  border-radius: 7px;
+  background-color: #70DFDF; }
   .settings__item--geo {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -650,11 +654,11 @@ body {
     margin: 0 auto;
     font-size: 20px;
     padding-top: 8px;
-    border-radius: 52px;
+    border-radius: 7px;
     width: 180px;
     height: 42px;
     text-align: center;
-    background-color: #56f7ff;
+    background-color: #70DFDF;
     color: #FFFFFF; }
 
 .cities {
@@ -702,7 +706,6 @@ body {
     color: #FFFFFF; }
     @media (max-width: 640px) {
       .cities__item {
-        background-color: #fffff5;
         color: #6980C5;
         border: 3px solid #70DFDF;
         height: 48px; } }
@@ -768,7 +771,7 @@ body {
       row-gap: 3rem;
       padding: 1rem 2rem 3rem 2rem; } }
   .info__item {
-    color: #fffff5;
+    color: #58a1ff;
     font-weight: bold;
     background-color: #FFFFFF;
     width: 11.25rem;
@@ -823,7 +826,7 @@ body {
   /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  color: #fffff5;
+  color: #58a1ff;
   width: 80%;
   /* Could be more or less, depending on screen size */ }
 
@@ -851,7 +854,7 @@ body {
   width: 45px;
   height: 45px;
   background-color: #70DFDF;
-  color: #fffff5;
+  color: #58a1ff;
   border: 0;
   cursor: pointer; }
   @media (min-width: 640px) {
