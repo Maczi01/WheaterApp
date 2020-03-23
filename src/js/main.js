@@ -255,9 +255,9 @@ function showOptions(e) {
         options.classList.add('toEditList__item--options');
         editButton.classList.add('toEditList__item--options--edit');
         deleteButton.classList.add('toEditList__item--options--delete');
-        editButton.innerText = 'Edytuj';
+        // editButton.innerText = 'Edytuj';
         editButton.id = 'quickEdit';
-        deleteButton.innerText = 'Usun';
+        // deleteButton.innerText = 'Usun';
         currentButton.replaceWith(options);
         deleteButton.addEventListener('click', () => {
             citiesList.splice(citiesList.indexOf(currentCity), 1);
@@ -302,9 +302,9 @@ function showOptions(e) {
                             options.classList.add('toEditList__item--options');
                             editButton.classList.add('toEditList__item--options--edit');
                             deleteButton.classList.add('toEditList__item--options--delete');
-                            editButton.innerText = 'Edytuj';
+                            // editButton.innerText = 'Edytuj';
                             editButton.id = 'quickEdit';
-                            deleteButton.innerText = 'Usun';
+                            // deleteButton.innerText = 'Usun';
                             deleteButton.addEventListener('click', () => {
                                 citiesList.splice(citiesList.indexOf(currentCity), 1);
                                 cities__toEditList.innerHTML = "";

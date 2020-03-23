@@ -519,21 +519,22 @@ body {
         padding: 60px 40px 40px 40px; } }
 
 .cities__toEditList__item--add {
-  margin: 0 auto;
+  margin: 2px;
   font-size: 20px;
   padding-top: 8px;
-  border-radius: 52px;
+  border-radius: 7px;
+  border: 3px solid #70DFDF;
   width: 180px;
   height: 42px;
   text-align: center;
-  background-color: #f5f037;
-  color: #58a1ff;
+  background-color: white;
+  color: #6980C5;
   -webkit-box-ordinal-group: 11;
       -ms-flex-order: 10;
           order: 10; }
 
 .cities__toEditList__item {
-  margin: 0 auto;
+  margin: 2px;
   font-size: 20px;
   padding-top: 8px;
   width: 180px;
@@ -578,7 +579,7 @@ body {
       padding-top: 8px;
       width: 90px;
       border-radius: 7px;
-      background-color: #6980C5;
+      background-color: #e46464;
       background-image: url("../assets/img/delete.svg");
       background-repeat: no-repeat;
       background-position: center; }
