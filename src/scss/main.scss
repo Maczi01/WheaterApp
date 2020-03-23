@@ -239,13 +239,14 @@ body {
   margin: 0 auto;
   font-size: 20px;
   padding-top: 8px;
-  border-radius: 52px;
   width: 180px;
   height: 42px;
   text-align: center;
-  background-color: $blue;
-  color: $white;
   order: 1;
+
+  border-radius: 7px;
+  background-color: #70DFDF;
+  color: $white;
 }
 
 
@@ -270,18 +271,24 @@ body {
     &--edit {
       padding-top: 8px;
       width: 90px;
-      border-bottom-left-radius: 52px;
-      border-top-left-radius: 52px;
-      background-color: #3727ff;
+      border-radius: 7px;
+      background-color: #6980C5;
+      background-image: url("../assets/img/edit.svg");
+      background-repeat: no-repeat;
+      background-position: center;
     }
 
     &--delete {
       padding-top: 8px;
 
       width: 90px;
-      border-bottom-right-radius: 52px;
-      border-top-right-radius: 52px;
-      background-color: #c5402a;
+      border-radius: 7px;
+
+      background-color: #6980C5;
+
+      background-image: url("../assets/img/delete.svg");
+      background-repeat: no-repeat;
+      background-position: center;
     }
 
   }
@@ -343,13 +350,15 @@ body {
   margin: 0 auto;
   font-size: 20px;
   padding-top: 8px;
-  border-radius: 52px;
   width: 180px;
   height: 42px;
   text-align: center;
   display: flex;
-  background-color: $blue;
   color: $white;
+
+  border-radius: 7px;
+  background-color: #70DFDF;
+
 
   &--geo {
     justify-content: center;
@@ -365,11 +374,11 @@ body {
     margin: 0 auto;
     font-size: 20px;
     padding-top: 8px;
-    border-radius: 52px;
+    border-radius: 7px;
     width: 180px;
     height: 42px;
     text-align: center;
-    background-color: $blue;
+    background-color: #70DFDF;
     color: $white;
   }
 }
@@ -414,9 +423,7 @@ body {
     height: 42px;
     background-color: #70DFDF;
     color: $white;
-    //transition: background-color .5s;
     @media (max-width: $phone) {
-      background-color: $black;
       color: #6980C5;
       border: 3px solid #70DFDF;
       height: 48px;
