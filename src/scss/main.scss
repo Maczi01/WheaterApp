@@ -251,7 +251,6 @@ body {
   color: $white;
 }
 
-
 .toEditList__item {
   margin: 0 auto;
   font-size: 20px;
@@ -420,12 +419,12 @@ body {
     margin: 10px;
     font-size: 20px;
     padding-top: 8px;
-    border-radius: 7px;
     width: 180px;
     height: 42px;
-    background-color: #70DFDF;
+    background-color: white;
+    border: 3px solid #70DFDF;
     border-radius: 7px;
-    color: $white;
+    color: #6980C5;
     @media (max-width: $phone) {
       color: #6980C5;
       border: 3px solid #70DFDF;
@@ -441,25 +440,36 @@ body {
     }
 
 
-    &--search {
-      order: 1;
-      margin: 0 auto;
-      width: 180px;
-      position: relative;
-      display: flex;
-      @media (max-width: $phone) {
-      }
-    }
+    //&--search {
+    //  order: 1;
+    //  margin: 0 auto;
+    //  width: 180px;
+    //  position: relative;
+    //  display: flex;
+    //  @media (max-width: $phone) {
+    //  }
+    //}
 
     &--input {
-      margin: 0 auto;
+
+      margin: 10px;
       font-size: 20px;
-      border-radius: 52px;
+      padding-top: 8px;
+      border-radius: 7px;
       width: 180px;
       height: 42px;
-      color: black;
-      border: solid 1px black;
-      order: 1;
+      background-color: white;
+      border: 3px solid #70DFDF;
+      border-radius: 7px;
+      color: #6980C5;
+    //  margin: 0 auto;
+    //  font-size: 20px;
+    //  border-radius: 52px;
+    //  width: 180px;
+    //  height: 42px;
+    //  color: black;
+    //  border: solid 1px black;
+    //  order: 1;
     }
   }
 }

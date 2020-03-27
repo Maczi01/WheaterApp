@@ -698,12 +698,12 @@ body {
     margin: 10px;
     font-size: 20px;
     padding-top: 8px;
-    border-radius: 7px;
     width: 180px;
     height: 42px;
-    background-color: #70DFDF;
+    background-color: white;
+    border: 3px solid #70DFDF;
     border-radius: 7px;
-    color: #FFFFFF; }
+    color: #6980C5; }
     @media (max-width: 640px) {
       .cities__item {
         color: #6980C5;
@@ -712,27 +712,17 @@ body {
     .cities__item--current {
       margin: 0 auto;
       text-align: center; }
-    .cities__item--search {
-      -webkit-box-ordinal-group: 2;
-          -ms-flex-order: 1;
-              order: 1;
-      margin: 0 auto;
-      width: 180px;
-      position: relative;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex; }
     .cities__item--input {
-      margin: 0 auto;
+      margin: 10px;
       font-size: 20px;
-      border-radius: 52px;
+      padding-top: 8px;
+      border-radius: 7px;
       width: 180px;
       height: 42px;
-      color: black;
-      border: solid 1px black;
-      -webkit-box-ordinal-group: 2;
-          -ms-flex-order: 1;
-              order: 1; }
+      background-color: white;
+      border: 3px solid #70DFDF;
+      border-radius: 7px;
+      color: #6980C5; }
 
 .searchButton {
   -webkit-box-ordinal-group: 2;
