@@ -15,6 +15,7 @@ if ('serviceWorker' in navigator) {
 const moment = require('moment-timezone');
 const SwipeListener = require('swipe-listener');
 
+
 const settingsImage = document.querySelector(".settings__image");
 const temp = document.querySelector('.info__item--temperature--js');
 const humidity = document.querySelector('.info__item--humidity--js');
